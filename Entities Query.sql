@@ -33,7 +33,7 @@ create table Exhibit(
     EManager_Id int not null
 );
 create table Supplier(
-    Company_Name varchar(50) primary key not null,
+    Company_Name varchar(50) primary key ,
     Email varchar(50) not null
 );
 create table Supplier_Phone(
@@ -78,7 +78,7 @@ create table Provides(
     primary key(company_name,clinic_no,equipment_no)
 );
 create table Staff(
-    Manager_ID int,
+    Manager_ID int ,
     Clinic_NO int,
     Exhibit_NO int,
     Shop_NO int,  
@@ -99,6 +99,7 @@ create table Staff(
     Foreign Key(Clinic_NO) references Clinic(Clinic_No),                
     Foreign Key(Exhibit_NO) references Exhibit(Exhibit_No)
 );
+
 create table Staff_Phone(
     Staff_ID int,
     Foreign Key(Staff_ID) references Staff(ID),
@@ -112,16 +113,14 @@ create table Shop(
     Product_Category varchar(50) not null CHECK (Product_Category IN ('Food', 'Gifts & Toys', 'Clothing', 'Accessories')),
     SManager_Id int not null
 );
-ALTER TABLE Staff
-ADD CONSTRAINT FK_Shop_NO
-FOREIGN KEY (Shop_NO) REFERENCES Shop(Shop_No);
+
 create table Sponsor(
     Sponsor_Name varchar(50) not null,
     Sponsor_ID int primary key Identity (1,1),
     Email varchar(50) not null,
     Start_Date Date not null,
     End_Date Date not null,
-    shop_no int,                               
+    shop_no int not null,                               
     Foreign Key(shop_no) references Shop(Shop_No)
 );
 create table Sponsor_Phone(
@@ -147,16 +146,16 @@ create table Donation(
     primary key(Visitor_Ticket,Location)
 );
 create table transacts(
-    ticket_No int,
+    ticket_no int,
     shop_no int,
-    Foreign Key(ticket_No) references Visitor(Ticket_Number),
+    Foreign Key(ticket_no) references Visitor(Ticket_Number),
     Foreign Key(shop_no) references Shop(Shop_No),
     Transaction_No int not null,
     Transaction_Value int not null,
     primary key(ticket_No, shop_no, Transaction_No)
 );
 create table Sponsor_Area_Acquired(
-    Area_Acquired varchar(50) not null,
+    Area_Acquired varchar(50),
     sponsor_id int,
     Foreign Key(sponsor_id) references Sponsor(Sponsor_ID),
     primary key (Area_Acquired,sponsor_id)
@@ -177,3 +176,7 @@ FOREIGN KEY (CManager_Id) REFERENCES Staff(ID);
 Alter Table Shop
 Add Constraint FK_SManager_Id
 Foreign Key (SManager_Id) References Staff(ID);
+
+ALTER TABLE Staff
+ADD CONSTRAINT FK_Shop_NO
+FOREIGN KEY (Shop_NO) REFERENCES Shop(Shop_No);
