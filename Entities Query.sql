@@ -105,6 +105,60 @@ create table Staff_Phone(
     Phone_No varchar(13) not null,
     primary key(Staff_ID,Phone_No)
 )
+create table Shop(
+    Shop_Name varchar(50) not null,
+    Shop_No int primary key Identity (1,1),
+    Location varchar(50) not null,
+    Product_Category carchar(50) not null CHECK (Product_Category IN ('Food', 'Gifts & Toys', 'Clothing', 'Accessories')),
+    SManager_Id int,
+    Foreign Key(SManager_Id) references Staff(ID)
+)
+create table Sponsor(
+    Sponsor_Name varchar(50) not null,
+    Sponsor_ID int primary key Identity (1,1),
+    Email varchar(50) not null,
+    Start_Date Date not null,
+    End_Date Date not null,
+    shop_no int,                               
+    Foreign Key(shop_no) references Shop(Shop_No)
+)
+create table Sponsor_Phone(
+    Sponsor_ID int,
+    Foreign Key(Sponsor_ID) references Sponsor(Sponsor_ID),
+    Phone_Number varchar(13) not null,
+    primary key(Sponsor_ID,Phone_Number)
+)
+create table Visitor(
+    Ticket_Number int primary key Identity (1,1),
+    Ticket_Type varchar(50) not null CHECK (Ticket_Type IN ('Basic', 'Premium', 'VIP', 'Student', 'Senior Citizen', 'Family', 'Child')),
+    Gender varchar(1) not null,
+    Age int not null,
+    Phone_Number varchar(13),
+    Visit_Date Date not null,
+)
+create table Donation(
+    Visitor_Ticket int,
+    Foreign Key(Visitor_Ticket) references Visitor(Ticket_Number),
+    Location varchar(50) not null,
+    Date Date not null,
+    Amount int not null,
+    primary key(Visitor_Ticket,Location)
+)
+create table transacts(
+    ticket_No int,
+    shop_no int,
+    Foreign Key(ticket_No) references Visitor(Ticket_Number),
+    Foreign Key(shop_no) references Shop(Shop_No),
+    Transaction_No int not null,
+    Transaction_Value int not null, 
+)
+create table Sponsor_Area_Acquired(
+    Area_Acquired varchar(50) not null,
+    sponsor_id int,
+    Foreign Key(sponsor_id) references Sponsor(Sponsor_ID),
+    primary key (Area_Acquired,sponsor_id)
+)
+
 
 ALTER TABLE Animal
 ADD CONSTRAINT FK_Exhibit_no 
