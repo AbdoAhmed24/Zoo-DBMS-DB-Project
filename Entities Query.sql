@@ -81,6 +81,7 @@ create table Staff(
     Manager_ID int,
     Clinic_NO int,
     Exhibit_NO int,
+    Shop_NO int,  
     SSN char(10) not null,
     ID int primary key Identity (1,1),
     Fname varchar(50) not null,
@@ -92,12 +93,12 @@ create table Staff(
     Gender varchar(1) not null,
     Role varchar(50) not null CHECK (Role IN ('Shop Manager', 'Veterinarian', 'Zookeeper', 'Security Guard','Shop Attendant','Janitor','Cafeteria Staff', 'Clinic Manager', 'Exhibit Advisor')),
     Joining_Date Date not null,
-    Birth_Date Date not null,
-    Shop_No int,                                --FK
+    Birth_Date Date not null,                          
     Working_Hours varchar(11) not null,
     Foreign Key(Manager_ID) REFERENCES Staff(ID),
     Foreign Key(Clinic_NO) references Clinic(Clinic_No),                
-    Foreign Key(Exhibit_NO) references Exhibit(Exhibit_No)                        
+    Foreign Key(Exhibit_NO) references Exhibit(Exhibit_No),
+    Foreign Key(Shop_NO) references Shop(Shop_No)                        
 )
 create table Staff_Phone(
     Staff_ID int,
