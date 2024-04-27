@@ -45,14 +45,14 @@ create table Exhibit(
     Location varchar(50),
     Size varchar(50) not null,
     Security_Level varchar(50),
-    EManager_Id int not null
+    EManager_Id int not null,
 );
 
     INSERT INTO Exhibit (Exhibit_Name, Capacity, Theme, Location, Size, Security_Level, EManager_Id)
     VALUES 
-    ('Savannah', 20, 'African Safari', 'Zone A', 'Large', 'High', 1),
-    ('Jungle', 15, 'Tropical Rainforest', 'Zone B', 'Medium', 'Medium', 2),
-    ('Grassland', 10, 'Safari Adventure', 'Zone C', 'Small', 'Low', 3);
+    ('Savannah', 20, 'African Safari', 'Zone A', 'Large', 'High', 5),
+    ('Jungle', 15, 'Tropical Rainforest', 'Zone B', 'Medium', 'Medium', 6),
+    ('Grassland', 10, 'Safari Adventure', 'Zone C', 'Small', 'Low', 7);
 
 create table Supplier(
     Company_Name varchar(50) primary key ,
@@ -116,13 +116,13 @@ create table Clinic(
     Operating_Hours varchar(30),
     Event_Type varchar(50) not null CHECK (Event_Type IN ('Check-Up', 'Surgery')),
     Event_Date Date,
-    CManager_Id int not null
+    CManager_Id int not null,
 );
 
 	INSERT INTO Clinic (Location, Capacity, Operating_Hours, Event_Type, Event_Date, CManager_Id)
     VALUES 
-    ('Veterinary Clinic', 20, '9:00 AM - 5:00 PM', 'Check-Up', '2024-04-27', 3),
-    ('Surgical Clinic', 15, '8:00 AM - 4:00 PM', 'Surgery', '2024-04-27', 3);
+    ('Veterinary Clinic', 20, '9:00 AM - 5:00 PM', 'Check-Up', '2024-04-27', 1),
+    ('Surgical Clinic', 15, '8:00 AM - 4:00 PM', 'Surgery', '2024-04-27', 2);
 
 create table Provides(
     company_name varchar(50),
@@ -165,9 +165,13 @@ create table Staff(
 
 	INSERT INTO Staff (Manager_ID, Clinic_NO, Exhibit_NO, Shop_NO, SSN, Fname, Mname, Lname, Address, Email, Salary, Gender, Role, Joining_Date, Birth_Date, Working_Hours)
     VALUES 
-    (NULL, 1, NULL, NULL, '1234567890', 'John', NULL, 'Doe', '123 Main St', 'john@example.com', 50000, 'M', 'Veterinarian', '2020-01-15', '1985-05-10', '9:00 AM - 5:00 PM'),
-    (NULL, 2, NULL, NULL, '9876543210', 'Jane', NULL, 'Smith', '456 Elm St', 'jane@example.com', 45000, 'F', 'Shop Manager', '2019-07-20', '1988-09-20', '10:00 AM - 6:00 PM'),
-	(NULL, NULL, 1, NULL, '1478523698', 'Youssef', NULL, 'Mohammed', '456 Elm St', 'yousef@example.com', 83655, 'M', 'Clinic Manager', '2019-07-20', '1988-09-20', '10:00 AM - 6:00 PM');
+    (NULL, 1, NULL, NULL, '1234567890', 'John', NULL, 'Doe', '123 Main St', 'john@example.com', 50000, 'M', 'Clinic Manager', '2020-01-15', '1985-05-10', '9:00 AM - 5:00 PM'),
+    (NULL, 2, NULL, NULL, '9876543210', 'Jane', NULL, 'Smith', '456 Elm St', 'jane@example.com', 45000, 'F', 'Clinic Manager', '2019-07-20', '1988-09-20', '10:00 AM - 6:00 PM'),
+	(NULL, NULL, Null, 1, '1478523698', 'Youssef', NULL, 'Mohammed', '456 Elm St', 'yousef@example.com', 83655, 'M', 'Shop Manager', '2019-07-20', '1988-09-20', '10:00 AM - 6:00 PM'),
+    (NULL, Null, Null, 2, '3437684591', 'John', NULL, 'Doe', '123 Main St', 'john@example.com', 50000, 'M', 'Shop Manager', '2020-01-15', '1985-05-10', '9:00 AM - 5:00 PM'),
+    (NULL, Null, 1, Null, '3681569136', 'Jane', NULL, 'Smith', '456 Elm St', 'jane@example.com', 45000, 'F', 'Exhibit Advisor', '2019-07-20', '1988-09-20', '10:00 AM - 6:00 PM'),
+	(NULL, NULL, 2, Null, '8449733147', 'Youssef', NULL, 'Mohammed', '456 Elm St', 'yousef@example.com', 83655, 'M', 'Exhibit Advisor', '2019-07-20', '1988-09-20', '10:00 AM - 6:00 PM'),
+    (NULL, NULL, 3, Null, '6234433129', 'Youssef', NULL, 'Mohammed', '456 Elm St', 'yousef@example.com', 83655, 'M', 'Exhibit Advisor', '2019-07-20', '1988-09-20', '10:00 AM - 6:00 PM');
 
 create table Staff_Phone(
     Staff_ID int,
@@ -184,22 +188,22 @@ create table Staff_Phone(
 create table Shop(
     Shop_Name varchar(50) not null,
     Shop_No int primary key Identity (1,1),
-    Location varchar(50) ,
+    Location varchar(50) CHECK (Location IN ('Zone A', 'Zone B', 'Zone C', 'Zone D', 'Zone E')),
     Product_Category varchar(50) not null CHECK (Product_Category IN ('Food', 'Gifts & Toys', 'Clothing', 'Accessories')),
-    SManager_Id int not null
+    SManager_Id int not null,
 );
 
     INSERT INTO Shop (Shop_Name, Location, Product_Category, SManager_Id)
     VALUES 
-    ('ZooGifts', 'Next to Entrance', 'Gifts & Toys', 2),
-    ('Safari Supplies', 'Near Savannah Exhibit', 'Food', 1);
+    ('ZooGifts', 'Zone A', 'Gifts & Toys', 3),
+    ('Safari Supplies', 'Zone C', 'Food', 4);
 
 create table Sponsor(
     Sponsor_Name varchar(50) not null,
     Sponsor_ID int primary key Identity (1,1),
     Email varchar(50) ,
     Start_Date Date ,
-    End_Date,
+    End_Date Date,
     shop_no int not null,                               
     Foreign Key(shop_no) references Shop(Shop_No)
 );
@@ -265,7 +269,7 @@ INSERT INTO transacts (ticket_no, shop_no, Transaction_No, Transaction_Value)
     (2, 2, 1, 200);
 
 create table Sponsor_Area_Acquired(
-    Area_Acquired varchar(50),
+    Area_Acquired varchar(50) CHECK (Area_Acquired IN ('Zone A', 'Zone B', 'Zone C', 'Zone D', 'Zone E')),
     sponsor_id int,
     Foreign Key(sponsor_id) references Sponsor(Sponsor_ID),
     primary key (Area_Acquired,sponsor_id)
@@ -273,8 +277,8 @@ create table Sponsor_Area_Acquired(
 
 INSERT INTO Sponsor_Area_Acquired (Area_Acquired, sponsor_id)
     VALUES 
-    ('Savannah Exhibit', 1),
-    ('Jungle Exhibit', 2);
+    ('Zone A', 1),
+    ('Zone C', 2);
 
 
 ALTER TABLE Animal
