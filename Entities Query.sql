@@ -199,7 +199,7 @@ create table Sponsor(
     Sponsor_ID int primary key Identity (1,1),
     Email varchar(50) ,
     Start_Date Date ,
-    End_Date,
+    End_Date Date,
     shop_no int not null,                               
     Foreign Key(shop_no) references Shop(Shop_No)
 );
