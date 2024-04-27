@@ -38,9 +38,9 @@ end;
 exec AddAnimal @Animal_Name = 'Mosaad', @Gender = 'M', @Habitat = 'Savannah', @General_Name = 'Zebra', @Genus = 'Equus', @Species = 'Zebra', @Status = 'Healthy', @Diet_Type = 'Herbivore', @Date_of_Birth = '2019-01-01', @Exhibit_no = 3
 
 --TransferAnimal
-create procedure TransferAnimal
+create procedure TransferAnimal(
     @Animal_ID int,
-    @Exhibit_no int
+    @Exhibit_no int)
 as
 begin
     if (select count(*) from Animal where Exhibit_no = @Exhibit_no) < (select Capacity from Exhibit where Exhibit_no = @Exhibit_no)
