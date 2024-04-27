@@ -6,6 +6,7 @@ create table Animal(
     Animal_Name varchar(50) not null,
     Gender varchar(1) not null,
     Habitat varchar(50) not null,
+    General_Name varchar(50),
     Genus varchar(50) not null,
     Species varchar(50) not null,
     Status varchar(50) not null,
