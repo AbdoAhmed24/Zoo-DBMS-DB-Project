@@ -5,13 +5,13 @@ create table Animal(
     Animal_Id int primary key Identity (1,1),
     Animal_Name varchar(50) not null,
     Gender varchar(1) not null,
-    Habitat varchar(50) not null,
-    General_Name varchar(50),
-    Genus varchar(50) not null,
-    Species varchar(50) not null,
+    Habitat varchar(50),
+    General_Name varchar(50) not null,
+    Genus varchar(50),
+    Species varchar(50),
     Status varchar(50) not null,
-    Diet_Type varchar(50) not null,
-    Date_of_Birth Date not null,
+    Diet_Type varchar(50),
+    Date_of_Birth Date,
     Family_Tree varchar(50),
     Exhibit_no int not null
 );
@@ -23,10 +23,10 @@ create table Animal(
     ('Lotso', 'M', 'Grassland', 'Elephant', 'Loxodonta', 'Africana', 'Wounded', 'Herbivore', '2014-12-10', 3);
 
 create table Medical_History(
-    Animal_Id int,
+    Animal_Id int not null,
     Foreign Key(Animal_id) references Animal(Animal_Id),
-    Diagnosis varchar(255) not null,
-    Diagnosis_Date Date not null,
+    Diagnosis varchar(255),
+    Diagnosis_Date Date,
     Treatment_Date Date,
     primary key(Animal_Id,Diagnosis,Diagnosis_Date)
 );
@@ -41,10 +41,10 @@ create table Exhibit(
     Exhibit_No Int primary key Identity (1,1),
     Exhibit_Name varchar(50) not null,
     Capacity int not null,
-    Theme varchar(50) not null,
-    Location varchar(50) not null,
+    Theme varchar(50),
+    Location varchar(50),
     Size varchar(50) not null,
-    Security_Level varchar(50) not null,
+    Security_Level varchar(50),
     EManager_Id int not null
 );
 
@@ -56,7 +56,7 @@ create table Exhibit(
 
 create table Supplier(
     Company_Name varchar(50) primary key ,
-    Email varchar(50) not null
+    Email varchar(50)
 );
 
     INSERT INTO Supplier (Company_Name, Email)
@@ -111,11 +111,11 @@ create table Equipment(
 
 create table Clinic(
     Clinic_No int primary key Identity (1,1),
-    Location varchar(50) not null,
-    Capacity int not null,
-    Operating_Hours varchar(30) not null,
+    Location varchar(50),
+    Capacity int,
+    Operating_Hours varchar(30),
     Event_Type varchar(50) not null CHECK (Event_Type IN ('Check-Up', 'Surgery')),
-    Event_Date Date not null,
+    Event_Date Date,
     CManager_Id int not null
 );
 
@@ -150,14 +150,14 @@ create table Staff(
     Fname varchar(50) not null,
     Mname varchar(50),
     Lname varchar(50) not null,
-    Address varchar(50) not null,
-    Email varchar(50) not null,
+    Address varchar(50) ,
+    Email varchar(50) ,
     Salary int not null,
     Gender varchar(1) not null,
     Role varchar(50) not null CHECK (Role IN ('Shop Manager', 'Veterinarian', 'Zookeeper', 'Security Guard','Shop Attendant','Janitor','Cafeteria Staff', 'Clinic Manager', 'Exhibit Advisor')),
-    Joining_Date Date not null,
+    Joining_Date Date,
     Birth_Date Date not null,                          
-    Working_Hours varchar(30) not null,
+    Working_Hours varchar(30),
     Foreign Key(Manager_ID) REFERENCES Staff(ID),
     Foreign Key(Clinic_NO) references Clinic(Clinic_No),                
     Foreign Key(Exhibit_NO) references Exhibit(Exhibit_No)
@@ -184,7 +184,7 @@ create table Staff_Phone(
 create table Shop(
     Shop_Name varchar(50) not null,
     Shop_No int primary key Identity (1,1),
-    Location varchar(50) not null,
+    Location varchar(50) ,
     Product_Category varchar(50) not null CHECK (Product_Category IN ('Food', 'Gifts & Toys', 'Clothing', 'Accessories')),
     SManager_Id int not null
 );
@@ -197,9 +197,9 @@ create table Shop(
 create table Sponsor(
     Sponsor_Name varchar(50) not null,
     Sponsor_ID int primary key Identity (1,1),
-    Email varchar(50) not null,
-    Start_Date Date not null,
-    End_Date Date not null,
+    Email varchar(50) ,
+    Start_Date Date ,
+    End_Date,
     shop_no int not null,                               
     Foreign Key(shop_no) references Shop(Shop_No)
 );
@@ -227,7 +227,7 @@ create table Visitor(
     Gender varchar(1) not null,
     Age int not null,
     Phone_Number varchar(13),
-    Visit_Date Date not null
+    Visit_Date Date 
 );
 
 	INSERT INTO Visitor (Ticket_Type, Gender, Age, Phone_Number, Visit_Date)
@@ -239,7 +239,7 @@ create table Donation(
     Visitor_Ticket int,
     Foreign Key(Visitor_Ticket) references Visitor(Ticket_Number),
     Location varchar(50) not null,
-    Date Date not null,
+    Date Date,
     Amount int not null,
     primary key(Visitor_Ticket,Location)
 );
@@ -254,8 +254,8 @@ create table transacts(
     shop_no int,
     Foreign Key(ticket_no) references Visitor(Ticket_Number),
     Foreign Key(shop_no) references Shop(Shop_No),
-    Transaction_No int not null,
-    Transaction_Value int not null,
+    Transaction_No int ,
+    Transaction_Value int ,
     primary key(ticket_No, shop_no, Transaction_No)
 );
 
