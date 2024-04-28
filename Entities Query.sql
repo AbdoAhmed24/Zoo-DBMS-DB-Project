@@ -19,52 +19,50 @@ create table Animal(
 	INSERT INTO Animal (Animal_Name, Gender, Habitat, General_Name, Genus, Species, Status, Diet_Type, Date_of_Birth,Family_Tree,Exhibit_no)
     VALUES 
     ('Teddy', 'M', 'Savannah', 'Lion', 'Panthera', 'Leo', 'Healthy', 'Carnivore', '2015-07-15',Null, 1), --1
-('Belle', 'F', 'Jungle', 'Tiger', 'Panthera', 'Tigris', 'Healthy', 'Carnivore', '2016-09-20',2, 2), --2
-('Lotso', 'M', 'Grassland', 'Elephant', 'Loxodonta', 'Africana', 'Injured', 'Herbivore', '2014-12-10',3, 3),--3
-('Simba', 'M', 'Savannah', 'Lion', 'Panthera', 'Leo', 'Healthy', 'Carnivore', '2019-03-12', 1, 1), --4
-('Nala', 'F', 'Savannah', 'Lioness', 'Panthera', 'Leo', 'Healthy', 'Carnivore', '2020-06-25', 1, 1), --5
-('Mufasa', 'M', 'Savannah', 'Lion', 'Panthera', 'Leo', 'Sick', 'Carnivore', '2014-05-03', 1, 1), --6
-('Rajah', 'M', 'Jungle', 'Tiger', 'Panthera', 'Tigris', 'Healthy', 'Carnivore', '2018-11-04', 2, 2), --7
-('Shere Khan', 'M', 'Jungle', 'Tiger', 'Panthera', 'Tigris', 'Healthy', 'Carnivore', '2017-08-17', Null, 2), --8
-('Bagheera', 'M', 'Jungle', 'Black Panther', 'Panthera', 'Pardus', 'Healthy', 'Carnivore', '2019-03-27', Null, 6), --9
-('King Louie', 'M', 'Jungle', 'Orangutan', 'Pongo', 'Abelii', 'Healthy', 'Omnivore', '2018-08-14', Null, 4), --10
-('Kaa', 'F', 'Jungle', 'Python', 'Python', 'Molurus', 'Healthy', 'Carnivore', '2015-11-22', Null, 5), --11
-('Hathi', 'M', 'Grassland', 'Elephant', 'Elephas', 'Maximus', 'Healthy', 'Herbivore', '2017-04-30', 3, 3), --12
-('Rani', 'F', 'Grassland', 'Elephant', 'Elephas', 'Maximus', 'Pregnant', 'Herbivore', '2016-09-05', 3, 3), --13
-('Hathi Jr.', 'M', 'Grassland', 'Elephant', 'Elephas', 'Maximus', 'Healthy', 'Herbivore', '2018-11-11', 3, 3), --14
-('Yogi', 'M', 'Forest', 'Bear', 'Ursus', 'Arctos', 'Healthy', 'Omnivore', '2017-07-19', 4, 7), --15
-('Boo Boo', 'M', 'Forest', 'Bear', 'Ursus', 'Arctos', 'Healthy', 'Omnivore', '2019-04-26', 4, 7), --16
-('Kerchak', 'M', 'Forest', 'Gorilla', 'Gorilla', 'Gorilla', 'Healthy', 'Herbivore', '2016-10-02', 5, 8), --17
-('Araujo', 'M', 'Forest', 'Gorilla', 'Gorilla', 'Gorilla', 'Healthy', 'Herbivore', '2018-04-07', 5, 8), --18
-('Kala', 'F', 'Forest', 'Gorilla', 'Gorilla', 'Gorilla', 'Healthy', 'Herbivore', '2017-12-15', 5, 8), --19
-('Raksha', 'F', 'Forest', 'Wolf', 'Canis', 'Lupus', 'Healthy', 'Carnivore', '2018-03-08', 6, 9), --20
-('Akela', 'M', 'Forest', 'Wolf', 'Canis', 'Lupus', 'Healthy', 'Carnivore', '2015-09-21', 6, 9), --21
-('Marlin', 'M', 'Ocean', 'Fish', 'Paracanthurus', 'Hepatus', 'Healthy', 'Omnivore', '2017-10-03', Null, 10), --22
-('Nemo', 'M', 'Ocean', 'Clownfish', 'Amphiprion', 'Ocellaris', 'Healthy', 'Omnivore', '2018-12-01', Null, 10), --23
-('Dory', 'F', 'Ocean', 'Fish', 'Paracanthurus', 'Hepatus', 'Healthy', 'Omnivore', '2018-02-17', Null, 10), --24
-('Ziggy', 'M', 'Grassland', 'Zebra', 'Equus', 'Zebra', 'Healthy', 'Herbivore', '2017-08-10', 7, 11), --25
-('Zara', 'F', 'Grassland', 'Zebra', 'Equus', 'Zebra', 'Healthy', 'Herbivore', '2019-05-21', 7, 11), --26
-('Gerald', 'M', 'Savannah', 'Giraffe', 'Giraffa', 'Camelopardalis', 'Healthy', 'Herbivore', '2016-12-05', 8, 12), --27
-('Gina', 'F', 'Savannah', 'Giraffe', 'Giraffa', 'Camelopardalis', 'Healthy', 'Herbivore', '2018-10-18', 8, 12), --28
-('Randy', 'M', 'Grassland', 'Rhino', 'Rhinoceros', 'Unicornis', 'Healthy', 'Herbivore', '2015-09-07', 9, 13), --29
-('Rhonda', 'F', 'Grassland', 'Rhino', 'Rhinoceros', 'Unicornis', 'Healthy', 'Herbivore', '2017-04-14', 9, 13), --30
-('Rocky', 'M', 'Mountain', 'Mountain Goat', 'Oreamnos', 'Americanus', 'Healthy', 'Herbivore', '2017-10-15', NULL, 14), --31
-('Ruby', 'F', 'Mountain', 'Mountain Goat', 'Oreamnos', 'Americanus', 'Healthy', 'Herbivore', '2019-02-28', NULL, 14), --32
-('Messi','M', 'Mountain', 'Mountain Goat','Oreamnos', 'Americanus', 'Healthy', 'Herbivore', '2020-06-24', NULL, 14), --33
-('Spike', 'M', 'Desert', 'Camel', 'Camelus', 'Dromedarius', 'Healthy', 'Herbivore', '2016-06-09',10, 15), --34
-('Sandy', 'F', 'Desert', 'Camel', 'Camelus', 'Dromedarius', 'Sick', 'Herbivore', '2018-08-22', 10, 15), --35
-('Toby', 'M', 'Jungle', 'Tiger', 'Panthera', 'Tigris', 'Healthy', 'Carnivore', '2020-01-04', 2, 2), --36
-('Tina', 'F', 'Jungle', 'Tiger', 'Panthera', 'Tigris', 'Injured', 'Carnivore', '2019-07-17', 2, 2), --37
-('Buddy', 'M', 'Swamp', 'Alligator', 'Alligator', 'Mississippiensis', 'Healthy', 'Carnivore', '2018-11-29', NULL, 16), --38
-('Betty', 'F', 'Swamp', 'Alligator', 'Alligator', 'Mississippiensis', 'Healthy', 'Carnivore', '2017-05-12', NULL, 16), --39
-('Max', 'M', 'Tundra', 'Polar Bear', 'Ursus', 'Maritimus', 'Healthy', 'Carnivore', '2015-12-08', 11, 18), --40
-('Mia', 'F', 'Tundra', 'Polar Bear', 'Ursus', 'Maritimus', 'Pregnant', 'Carnivore', '2016-08-25', 11, 18), --41
-('Adam', 'M', 'Savannah', 'Ostrich', 'Struthio', 'Camelus', 'Healthy', 'Herbivore', '2017-12-05', Null, 11), --42
-('Eve', 'F', 'Savannah', 'Ostrich', 'Struthio', 'Camelus', 'Healthy', 'Herbivore', '2019-02-14', Null, 11), --43
-('Gaza', 'M', 'Savannah', 'Gazelle', 'Gazella', 'Dorcas', 'Healthy', 'Herbivore', '2018-11-07', Null, 11), --44
-('Aisha', 'F', 'Savannah', 'Gazelle', 'Gazella', 'Dorcas', 'Healthy', 'Herbivore', '2019-09-02', Null, 11); --45
-
-
+    ('Belle', 'F', 'Jungle', 'Tiger', 'Panthera', 'Tigris', 'Healthy', 'Carnivore', '2016-09-20',2, 2), --2
+    ('Lotso', 'M', 'Grassland', 'Elephant', 'Loxodonta', 'Africana', 'Injured', 'Herbivore', '2014-12-10',3, 3),--3
+    ('Simba', 'M', 'Savannah', 'Lion', 'Panthera', 'Leo', 'Healthy', 'Carnivore', '2019-03-12', 1, 1), --4
+    ('Nala', 'F', 'Savannah', 'Lioness', 'Panthera', 'Leo', 'Healthy', 'Carnivore', '2020-06-25', 1, 1), --5
+    ('Mufasa', 'M', 'Savannah', 'Lion', 'Panthera', 'Leo', 'Sick', 'Carnivore', '2014-05-03', 1, 1), --6
+    ('Rajah', 'M', 'Jungle', 'Tiger', 'Panthera', 'Tigris', 'Healthy', 'Carnivore', '2018-11-04', 2, 2), --7
+    ('Shere Khan', 'M', 'Jungle', 'Tiger', 'Panthera', 'Tigris', 'Healthy', 'Carnivore', '2017-08-17', Null, 2), --8
+    ('Bagheera', 'M', 'Jungle', 'Black Panther', 'Panthera', 'Pardus', 'Healthy', 'Carnivore', '2019-03-27', Null, 6), --9
+    ('King Louie', 'M', 'Jungle', 'Orangutan', 'Pongo', 'Abelii', 'Healthy', 'Omnivore', '2018-08-14', Null, 4), --10
+    ('Kaa', 'F', 'Jungle', 'Python', 'Python', 'Molurus', 'Healthy', 'Carnivore', '2015-11-22', Null, 5), --11
+    ('Hathi', 'M', 'Grassland', 'Elephant', 'Elephas', 'Maximus', 'Healthy', 'Herbivore', '2017-04-30', 3, 3), --12
+    ('Rani', 'F', 'Grassland', 'Elephant', 'Elephas', 'Maximus', 'Pregnant', 'Herbivore', '2016-09-05', 3, 3), --13
+    ('Hathi Jr.', 'M', 'Grassland', 'Elephant', 'Elephas', 'Maximus', 'Healthy', 'Herbivore', '2018-11-11', 3, 3), --14
+    ('Yogi', 'M', 'Forest', 'Bear', 'Ursus', 'Arctos', 'Healthy', 'Omnivore', '2017-07-19', 4, 7), --15
+    ('Boo Boo', 'M', 'Forest', 'Bear', 'Ursus', 'Arctos', 'Healthy', 'Omnivore', '2019-04-26', 4, 7), --16
+    ('Kerchak', 'M', 'Forest', 'Gorilla', 'Gorilla', 'Gorilla', 'Healthy', 'Herbivore', '2016-10-02', 5, 8), --17
+    ('Araujo', 'M', 'Forest', 'Gorilla', 'Gorilla', 'Gorilla', 'Healthy', 'Herbivore', '2018-04-07', 5, 8), --18
+    ('Kala', 'F', 'Forest', 'Gorilla', 'Gorilla', 'Gorilla', 'Healthy', 'Herbivore', '2017-12-15', 5, 8), --19
+    ('Raksha', 'F', 'Forest', 'Wolf', 'Canis', 'Lupus', 'Healthy', 'Carnivore', '2018-03-08', 6, 9), --20
+    ('Akela', 'M', 'Forest', 'Wolf', 'Canis', 'Lupus', 'Healthy', 'Carnivore', '2015-09-21', 6, 9), --21
+    ('Marlin', 'M', 'Ocean', 'Fish', 'Paracanthurus', 'Hepatus', 'Healthy', 'Omnivore', '2017-10-03', Null, 10), --22
+    ('Nemo', 'M', 'Ocean', 'Clownfish', 'Amphiprion', 'Ocellaris', 'Healthy', 'Omnivore', '2018-12-01', Null, 10), --23
+    ('Dory', 'F', 'Ocean', 'Fish', 'Paracanthurus', 'Hepatus', 'Healthy', 'Omnivore', '2018-02-17', Null, 10), --24
+    ('Ziggy', 'M', 'Grassland', 'Zebra', 'Equus', 'Zebra', 'Healthy', 'Herbivore', '2017-08-10', 7, 11), --25
+    ('Zara', 'F', 'Grassland', 'Zebra', 'Equus', 'Zebra', 'Healthy', 'Herbivore', '2019-05-21', 7, 11), --26
+    ('Gerald', 'M', 'Savannah', 'Giraffe', 'Giraffa', 'Camelopardalis', 'Healthy', 'Herbivore', '2016-12-05', 8, 12), --27
+    ('Gina', 'F', 'Savannah', 'Giraffe', 'Giraffa', 'Camelopardalis', 'Healthy', 'Herbivore', '2018-10-18', 8, 12), --28
+    ('Randy', 'M', 'Grassland', 'Rhino', 'Rhinoceros', 'Unicornis', 'Healthy', 'Herbivore', '2015-09-07', 9, 13), --29
+    ('Rhonda', 'F', 'Grassland', 'Rhino', 'Rhinoceros', 'Unicornis', 'Healthy', 'Herbivore', '2017-04-14', 9, 13), --30
+    ('Rocky', 'M', 'Mountain', 'Mountain Goat', 'Oreamnos', 'Americanus', 'Healthy', 'Herbivore', '2017-10-15', NULL, 14), --31
+    ('Ruby', 'F', 'Mountain', 'Mountain Goat', 'Oreamnos', 'Americanus', 'Healthy', 'Herbivore', '2019-02-28', NULL, 14), --32
+    ('Messi','M', 'Mountain', 'Mountain Goat','Oreamnos', 'Americanus', 'Healthy', 'Herbivore', '2020-06-24', NULL, 14), --33
+    ('Spike', 'M', 'Desert', 'Camel', 'Camelus', 'Dromedarius', 'Healthy', 'Herbivore', '2016-06-09',10, 15), --34
+    ('Sandy', 'F', 'Desert', 'Camel', 'Camelus', 'Dromedarius', 'Sick', 'Herbivore', '2018-08-22', 10, 15), --35
+    ('Toby', 'M', 'Jungle', 'Tiger', 'Panthera', 'Tigris', 'Healthy', 'Carnivore', '2020-01-04', 2, 2), --36
+    ('Tina', 'F', 'Jungle', 'Tiger', 'Panthera', 'Tigris', 'Injured', 'Carnivore', '2019-07-17', 2, 2), --37
+    ('Buddy', 'M', 'Swamp', 'Alligator', 'Alligator', 'Mississippiensis', 'Healthy', 'Carnivore', '2018-11-29', NULL, 16), --38
+    ('Betty', 'F', 'Swamp', 'Alligator', 'Alligator', 'Mississippiensis', 'Healthy', 'Carnivore', '2017-05-12', NULL, 16), --39
+    ('Max', 'M', 'Tundra', 'Polar Bear', 'Ursus', 'Maritimus', 'Healthy', 'Carnivore', '2015-12-08', 11, 17), --40
+    ('Mia', 'F', 'Tundra', 'Polar Bear', 'Ursus', 'Maritimus', 'Pregnant', 'Carnivore', '2016-08-25', 11, 17), --41
+    ('Adam', 'M', 'Savannah', 'Ostrich', 'Struthio', 'Camelus', 'Healthy', 'Herbivore', '2017-12-05', Null, 11), --42
+    ('Eve', 'F', 'Savannah', 'Ostrich', 'Struthio', 'Camelus', 'Healthy', 'Herbivore', '2019-02-14', Null, 11), --43
+    ('Gaza', 'M', 'Savannah', 'Gazelle', 'Gazella', 'Dorcas', 'Healthy', 'Herbivore', '2018-11-07', Null, 11), --44
+    ('Aisha', 'F', 'Savannah', 'Gazelle', 'Gazella', 'Dorcas', 'Healthy', 'Herbivore', '2019-09-02', Null, 11); --45
 
 create table Medical_History(
     Animal_Id int not null,
@@ -117,11 +115,28 @@ create table Exhibit(
     EManager_Id int not null,
 );
 
+    -- Calculate and insert the size of each exhibit
     INSERT INTO Exhibit (Exhibit_Name, Capacity, Theme, Location, Size, Security_Level, EManager_Id)
     VALUES 
-    ('Savannah', 20, 'African Safari', 'Zone A', 'Large', 'High', 5),
-    ('Jungle', 15, 'Tropical Rainforest', 'Zone B', 'Medium', 'Medium', 6),
-    ('Grassland', 10, 'Safari Adventure', 'Zone C', 'Small', 'Low', 7);
+    ('Savannah Lions', 10, 'African Savannah', 'Zone A', '2500', 'High', 1), -- Exhibit 1
+    ('Jungle Tigers', 8, 'Tropical Rainforest', 'Zone A', '1600', 'Medium', 1), -- Exhibit 2
+    ('Grassland Elephants', 6, 'Grassland', 'Zone C', '2000', 'High', 1), -- Exhibit 3
+    ('Orangutan Rainforest', 4, 'Tropical Rainforest', 'Zone B', '1200', 'Medium', 1), -- Exhibit 4
+    ('Python Rainforest ', 12, 'Tropical Rainforest', 'Zone B', '2400', 'Medium', 1), -- Exhibit 5
+    ('Panther Forest', 6, 'Temperate Forest', 'Zone D', '1000', 'Low', 1), -- Exhibit 6
+    ('Forest Bears', 6, 'Temperate Forest', 'Zone D', '500', 'Medium', 4), -- Exhibit 7
+    ('Gorilla Forest', 10, 'Tropical Rainforest', 'Zone E', '10000', 'High', 5), -- Exhibit 8
+    ('Wolf Woods', 10, 'Forest Habitat', 'Zone C', '2400', 'Low', 6), -- Exhibit 9
+    ('Oceanic World', 15, 'Marine Life', 'Zone E', '800', 'High', 10), -- Exhibit 10
+    ('Savannah Plains', 30, 'African Wildlife', 'Zone A', '1200', 'High', 1), -- Exhibit 11
+    ('Giraffe Lands', 8, 'African Wildlife', 'Zone A', '1200', 'High', 1), -- Exhibit 12
+    ('Grassland Rhinos', 6, 'African Savannah', 'Zone A', '2000', 'High', 1), -- Exhibit 13
+    ('Mountain Goats', 10, 'Mountain Wildlife', 'Zone E', '2000', 'Medium', 1), -- Exhibit 14
+    ('Desert Dunes', 15, 'Desert Wildlife', 'Zone D', '1000', 'Medium', 1), -- Exhibit 15
+    ('Swamp Alligators', 8, 'Swamp Wildlife', 'Zone C', '1500', 'Medium', 1), -- Exhibit 16
+    ('Tundra Polar Bears', 6, 'Arctic Wildlife', 'Zone E', '2000', 'High', 1); -- Exhibit 17
+
+
 
 create table Supplier(
     Company_Name varchar(50) primary key ,
@@ -286,7 +301,7 @@ create table Sponsor(
     Email varchar(50) ,
     Start_Date Date ,
     End_Date Date,
-    shop_no int not null,                               
+    shop_no int,                               
     Foreign Key(shop_no) references Shop(Shop_No)
 );
 
