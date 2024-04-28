@@ -1,31 +1,29 @@
 --SalaryRaise 
-create procedure SalaryRaise(@Raise int , @ID int )
+create procedure SalaryRaise(@Raise FLOAT , @ID int )
 as
 begin
 Update Staff
-set salary = salary + salary*(@Raise/100)
+set Salary = Salary + Salary*(@Raise/100)
 where Staff.ID = @ID
-
 select Fname,Lname,SSN, ID, Salary as "Updated Salary" from Staff
 where ID =@ID 
+
 end;
---SalaryRaise Test
-exec SalaryRaise @Raise= 20, @ID = 1
+
 
 
 --SalaryDeduction
 go
-create procedure SalaryDeduction(@Deduction int , @ID int )
+create procedure SalaryDeduction(@Deduction FLOAT , @ID int )
 as
 begin
 Update Staff
-set salary = salary - salary*(@Deduction/100)
+set Salary = Salary - Salary*(@Deduction/100)
 where Staff.ID = @ID
 select Fname,Lname,SSN, ID, Salary as "Updated Salary" from Staff
 where ID =@ID 
 end; 
---SalaryDeduction Test
-exec SalaryDeduction @Deduction= 20, @ID = 1
+
 
 --AddAnimal
 go
@@ -36,8 +34,7 @@ begin
     values (@Animal_Name, @Gender, @Habitat, @General_Name, @Genus, @Species, @Status, @Diet_Type, @Date_of_Birth,@FamilyTree, @Exhibit_no)
     select * from Animal
 end;
---AddAnimal Test
-exec AddAnimal @Animal_Name = 'Mosaad', @Gender = 'M', @Habitat = 'Savannah', @General_Name = 'Zebra', @Genus = 'Equus', @Species = 'Zebra', @Status = 'Healthy', @Diet_Type = 'Herbivore', @Date_of_Birth = '2019-01-01', @Exhibit_no = 3
+
 
 --TransferAnimal
 go
@@ -58,8 +55,7 @@ begin
         print 'The exhibit is at full capacity. The animal cannot be transferred.';
     end
 end;
---TransferAnimal Test
-exec TransferAnimal @Animal_ID = 1, @Exhibit_no = 2
+
 
 --Check if the input id is a manager
 go
@@ -228,8 +224,6 @@ begin
     VALUES (@Shop_Name, @Location, @Product_Category, @SManager_Id)
     Select * from Shop
 end
---Add Shop Test
-exec AddShop @Shop_Name = 'Toys R Us', @Location = 'Zone A', @Product_Category = 'Gifts & Toys', @SManager_Id = 1
 
 
 
@@ -265,9 +259,6 @@ BEGIN
     INSERT INTO Sponsor_Phone (Sponsor_ID, Phone_Number)
     VALUES ((SELECT TOP 1 Sponsor_ID FROM Sponsor WHERE Sponsor_Name = @Sponsor_Name AND Email = @Email AND shop_no = @shop_no ORDER BY Sponsor_ID DESC), @Phone_Number)
 END
---Add Sponsor Test
-EXEC AddSponsor @Sponsor_Name = 'Simon', @Email = 'simon@email.com', @Start_Date = '2022-01-01', @End_Date = '2022-12-31', @Shop_Name = 'ZooGifts', @Location = 'Zone A', @Product_Category = 'Gifts & Toys', @SManager_Id = 3, @Phone_Number = '555-555-5555'
-
 --Create Exhibit
 go
 CREATE PROCEDURE CreateExhibit
@@ -284,8 +275,6 @@ BEGIN
     VALUES (@Exhibit_Name, @Capacity, @Theme, @Location, @Size, @Security_Level, @EManager_Id)
     SELECT * FROM Exhibit
 END
---Create Exhibit Test
-EXEC CreateExhibit @Exhibit_Name = 'Savannah', @Capacity = 10, @Theme = 'African', @Location = 'Zone A', @Size = '100000', @Security_Level = 'High', @EManager_Id = 1
 
 --Order Animal Food
 go
@@ -313,8 +302,6 @@ BEGIN
 
     SELECT * FROM Supplies
 END
---Order Animal Food Test
-EXEC OrderAnimalFood @Company_Name = 'FoodCo', @Email = 'contact@foodco.com', @Phone_No = '0123456789', @Food_Type = 'Grains', @Exhibit_No = 1, @Quantity = '100kg'
 
 --Order Equipment
 go
@@ -341,9 +328,6 @@ BEGIN
 
     SELECT * FROM Provides
 END
---Order Equipment Test
-exec OrderEquipment @Company_Name = 'EquipCo', @Email = 'contact@equipco.com', @Phone_No = '0123456789', @Clinic_No = 1, @Quantity = 1
-
 --Get Visitor's Donations
 go
 CREATE PROCEDURE GetVisitorDonations
@@ -352,8 +336,6 @@ AS
 BEGIN
     SELECT * FROM Donation WHERE Visitor_Ticket = @Visitor_Ticket
 END
---Get Visitor's Donations Test
-exec GetVisitorDonations @Visitor_Ticket = 1
 
 --Get Exhibit's Animals
 go
@@ -363,8 +345,7 @@ AS
 BEGIN
     SELECT * FROM Animal WHERE Exhibit_no = @Exhibit_No
 END
---Get Exhibit's Animals Test
-exec GetExhibitAnimals @Exhibit_No = 2
+
 
 --Diagnose Animal 
 go
@@ -389,8 +370,6 @@ BEGIN
     INSERT INTO Goes_To (animal_id, clinic_no, Event_Type, Event_Date)
     VALUES (@Animal_Id, @Clinic_No, @Event_Type, @Date_Diagnosed)
 END
---DiagnoseAnimal Test
-EXEC DiagnoseAnimal @Animal_Id = 2, @Status = 'Healthy', @Diagnosis = 'Routine Checkup', @Date_Diagnosed = '2022-02-01', @Event_Type = 'Checkup', @Clinic_No = 1
 
 --Treat Animal 
 go
@@ -414,13 +393,6 @@ BEGIN
     INSERT INTO Goes_To (animal_id, clinic_no, Event_Type, Event_Date)
     VALUES (@Animal_Id, @Clinic_No, @Event_Type, @Treatment_Date)
 END
--- Treat Animal Test
-EXEC TreatAnimal 
-    @Animal_Id = 2, 
-    @Diagnosis = 'Routine Checkup', 
-    @Treatment_Date = '2022-03-01', 
-    @Clinic_No = 2,
-    @Event_Type = 'Vaccination'
 
 --Transfer Staff
 go
@@ -523,8 +495,6 @@ BEGIN
     SELECT * FROM Animal WHERE Exhibit_no = @new_exhibit_id;
     Update Staff SET Exhibit_NO = @new_exhibit_id WHERE Exhibit_NO = @old_exhibit_id;
 END;
---Destroy Exhibit Test
-EXEC DestroyExhibit @old_exhibit_id = 1, @new_exhibit_id = 2
 
 --Delete a clinic
 go
@@ -590,9 +560,6 @@ FROM
     Staff
 WHERE 
     Manager_ID IS NULL;
---GetManagers Test
-go
-SELECT * FROM GetManagers;
 
 --GetRoleCount
 go
@@ -604,7 +571,5 @@ FROM
     Staff
 GROUP BY
     Role;
---GetRoleCount Test
-go
-SELECT * FROM GetRoleCount;
+
 
