@@ -293,7 +293,27 @@ create table Shop(
     INSERT INTO Shop (Shop_Name, Location, Product_Category, SManager_Id)
     VALUES 
     ('ZooGifts', 'Zone A', 'Gifts & Toys', 3),
-    ('Safari Supplies', 'Zone C', 'Food', 4);
+    ('Safari Supplies', 'Zone C', 'Food', 4),
+    ('SuperMart', 'Zone A', 'Food', 20),
+    ('FashionTrends', 'Zone B', 'Clothing', 21),
+    ('ToyWorld', 'Zone C', 'Gifts & Toys', 22),
+    ('HealthyBites', 'Zone D', 'Food', 23),
+    ('GadgetZone', 'Zone E', 'Accessories', 24),
+    ('BookNook', 'Zone A', 'Gifts & Toys', 25),
+    ('SportsEmporium', 'Zone B', 'Accessories', 26),
+    ('CosmeticGlam', 'Zone C', 'Accessories', 27),
+    ('HomeDecor', 'Zone D', 'Gifts & Toys', 28),
+    ('ElectroMart', 'Zone E', 'Accessories', 29),
+    ('FancyFurniture', 'Zone A', 'Clothing', 20), -- Same manager as SuperMart
+    ('PetParadise', 'Zone B', 'Accessories', 21), -- Same manager as FashionTrends
+    ('TechTrends', 'Zone C', 'Accessories', 22), -- Same manager as ToyWorld
+    ('UrbanWear', 'Zone D', 'Clothing', 23), -- Same manager as HealthyBites
+    ('ArtisticExpressions', 'Zone E', 'Gifts & Toys', 24), -- Same manager as GadgetZone
+    ('FoodFiesta', 'Zone A', 'Food', 25), -- Same manager as BookNook
+    ('FashionHub', 'Zone B', 'Clothing', 26), -- Same manager as SportsEmporium
+    ('GizmoGalaxy', 'Zone C', 'Accessories', 27), -- Same manager as CosmeticGlam
+    ('OutdoorsUnlimited', 'Zone D', 'Accessories', 28), -- Same manager as HomeDecor
+    ('GameGalore', 'Zone E', 'Gifts & Toys', 29);
 
 create table Sponsor(
     Sponsor_Name varchar(50) not null,
