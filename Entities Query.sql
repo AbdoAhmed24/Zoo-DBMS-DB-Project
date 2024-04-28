@@ -271,7 +271,7 @@ create table transacts(
     shop_no int,
     Foreign Key(ticket_no) references Visitor(Ticket_Number),
     Foreign Key(shop_no) references Shop(Shop_No),
-    Transaction_No int ,
+    Transaction_No int Identity (1,1),
     Transaction_Value int ,
     primary key(ticket_No, shop_no, Transaction_No)
 );
