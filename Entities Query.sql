@@ -119,8 +119,8 @@ create table Clinic(
 
 	INSERT INTO Clinic (Location, Capacity, Operating_Hours, CManager_Id)
     VALUES 
-    ('Veterinary Clinic', 20, '9:00 AM - 5:00 PM', '2024-04-27', 1),
-    ('Surgical Clinic', 15, '8:00 AM - 4:00 PM','2024-04-27', 2);
+    ('Veterinary Clinic', 20, '9:00 AM - 5:00 PM', 1),
+    ('Surgical Clinic', 15, '8:00 AM - 4:00 PM',2);
 
 create table Goes_To(
     animal_id int,

@@ -365,5 +365,36 @@ END
 --Get Exhibit's Animals Test
 exec GetExhibitAnimals @Exhibit_No = 2
 
+--Diagnose Animal 
+-- Add Status column to Animal table
+ALTER TABLE Animal
+ADD Status varchar(255);
+
+-- Create DiagnoseAnimal procedure
+go
+CREATE PROCEDURE DiagnoseAnimal
+    @Animal_Id int,
+    @Status varchar(255),
+    @Diagnosis varchar(255),
+    @Date_Diagnosed date,
+    @Event_Type varchar(255),
+    @Clinic_No int
+AS
+BEGIN
+    -- Update Status in Animal table
+    UPDATE Animal
+    SET Status = @Status
+    WHERE Animal_Id = @Animal_Id
+
+    -- Insert into Medical_History table
+    INSERT INTO Medical_History (Animal_Id, Diagnosis, Diagnosis_Date)
+    VALUES (@Animal_Id, @Diagnosis, @Date_Diagnosed)
+
+    -- Insert into Goes_To table
+    INSERT INTO Goes_To (animal_id, clinic_no, Event_Type, Event_Date)
+    VALUES (@Animal_Id, @Clinic_No, @Event_Type, @Date_Diagnosed)
+END
+--DiagnoseAnimal Test
+EXEC DiagnoseAnimal @Animal_Id = 2, @Status = 'Healthy', @Diagnosis = 'Routine Checkup', @Date_Diagnosed = '2022-02-01', @Event_Type = 'Checkup', @Clinic_No = 1
 
 
