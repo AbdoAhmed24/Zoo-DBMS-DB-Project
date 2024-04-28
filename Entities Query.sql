@@ -789,9 +789,390 @@ create table transacts(
 );
 
 INSERT INTO transacts (ticket_no, shop_no, Transaction_Value)
-    VALUES 
-    (1, 1, 50),
-    (2, 2, 200);
+VALUES
+-- Visitor 17
+(17, 20, 110), -- GizmoGalaxy
+(17, 21, 80), -- OutdoorsUnlimited
+(17, 22, 70), -- GameGalore
+-- Visitor 18
+(18, 1, 90), -- ZooGifts
+(18, 2, 120), -- Safari Supplies
+(18, 3, 50), -- SuperMart
+-- Visitor 19
+(19, 4, 70), -- FashionTrends
+(19, 5, 100), -- ToyWorld
+-- Visitor 20
+(20, 6, 80), -- HealthyBites
+-- Visitor 21
+(21, 7, 60), -- GadgetZone
+-- Visitor 22
+(22, 8, 110), -- BookNook
+(22, 9, 40), -- SportsEmporium
+(22, 10, 90), -- CosmeticGlam
+-- Visitor 23
+(23, 11, 100), -- HomeDecor
+(23, 12, 70), -- ElectroMart
+-- Visitor 24
+(24, 13, 80), -- FancyFurniture
+-- Visitor 25
+(25, 14, 50), -- PetParadise
+-- Visitor 26
+(26, 15, 110), -- TechTrends
+(26, 16, 90), -- UrbanWear
+-- Visitor 27
+(27, 17, 70), -- ArtisticExpressions
+-- Visitor 28
+(28, 18, 130), -- FoodFiesta
+(28, 19, 60), -- FashionHub
+-- Visitor 29
+(29, 20, 100), -- GizmoGalaxy
+(29, 21, 70), -- OutdoorsUnlimited
+(29, 22, 80), -- GameGalore
+-- Visitor 30
+(30, 1, 80), -- ZooGifts
+(30, 2, 130), -- Safari Supplies
+(30, 3, 60), -- SuperMart
+-- Visitor 31
+(31, 4, 90), -- FashionTrends
+(31, 5, 120), -- ToyWorld
+-- Visitor 32
+(32, 6, 70), -- HealthyBites
+-- Visitor 33
+(33, 7, 50), -- GadgetZone
+-- Visitor 34
+(34, 8, 100), -- BookNook
+(34, 9, 30), -- SportsEmporium
+(34, 10, 70), -- CosmeticGlam
+-- Visitor 35
+(35, 11, 90), -- HomeDecor
+(35, 12, 80), -- ElectroMart
+-- Visitor 36
+(36, 13, 70), -- FancyFurniture
+-- Visitor 37
+(37, 14, 40), -- PetParadise
+-- Visitor 38
+(38, 15, 120), -- TechTrends
+(38, 16, 100), -- UrbanWear
+-- Visitor 39
+(39, 17, 60), -- ArtisticExpressions
+-- Visitor 40
+(40, 18, 140), -- FoodFiesta
+(40, 19, 70), -- FashionHub
+-- Visitor 41
+(41, 20, 90), -- GizmoGalaxy
+(41, 21, 80), -- OutdoorsUnlimited
+(41, 22, 90), -- GameGalore
+-- Visitor 42
+(42, 1, 70), -- ZooGifts
+(42, 2, 140), -- Safari Supplies
+(42, 3, 70), -- SuperMart
+-- Visitor 43
+(43, 4, 100), -- FashionTrends
+(43, 5, 110), -- ToyWorld
+-- Visitor 44
+(44, 6, 60), -- HealthyBites
+-- Visitor 45
+(45, 7, 40), -- GadgetZone
+-- Visitor 46
+(46, 8, 90), -- BookNook
+(46, 9, 50), -- SportsEmporium
+(46, 10, 80), -- CosmeticGlam
+-- Visitor 47
+(47, 11, 80), -- HomeDecor
+(47, 12, 90), -- ElectroMart
+-- Visitor 48
+(48, 13, 60), -- FancyFurniture
+-- Visitor 49
+(49, 14, 30), -- PetParadise
+-- Visitor 50
+(50, 15, 110), -- TechTrends
+(50, 16, 90), -- UrbanWear
+-- Visitor 51
+(51, 17, 50), -- ArtisticExpressions
+-- Visitor 52
+(52, 18, 130), -- FoodFiesta
+(52, 19, 60), -- FashionHub
+-- Visitor 53
+(53, 20, 100), -- GizmoGalaxy
+(53, 21, 70), -- OutdoorsUnlimited
+(53, 22, 90), -- GameGalore
+-- Visitor 54
+(54, 1, 80), -- ZooGifts
+(54, 2, 120), -- Safari Supplies
+(54, 3, 50), -- SuperMart
+-- Visitor 55
+(55, 4, 70), -- FashionTrends
+(55, 5, 100), -- ToyWorld
+-- Visitor 56
+(56, 6, 80), -- HealthyBites
+-- Visitor 57
+(57, 7, 60), -- GadgetZone
+-- Visitor 58
+(58, 8, 110), -- BookNook
+(58, 9, 40), -- SportsEmporium
+(58, 10, 90), -- CosmeticGlam
+-- Visitor 59
+(59, 11, 100), -- HomeDecor
+(59, 12, 70), -- ElectroMart
+-- Visitor 60
+(60, 13, 80), -- FancyFurniture
+-- Visitor 61
+(61, 14, 50), -- PetParadise
+-- Visitor 62
+(62, 15, 110), -- TechTrends
+(62, 16, 90), -- UrbanWear
+-- Visitor 63
+(63, 17, 70), -- ArtisticExpressions
+-- Visitor 64
+(64, 18, 130), -- FoodFiesta
+(64, 19, 60), -- FashionHub
+-- Visitor 65
+(65, 20, 100), -- GizmoGalaxy
+(65, 21, 70), -- OutdoorsUnlimited
+(65, 22, 80), -- GameGalore
+-- Visitor 66
+(66, 1, 90), -- ZooGifts
+(66, 2, 130), -- Safari Supplies
+(66, 3, 60), -- SuperMart
+-- Visitor 67
+(67, 4, 90), -- FashionTrends
+(67, 5, 120), -- ToyWorld
+-- Visitor 68
+(68, 6, 70), -- HealthyBites
+-- Visitor 69
+(69, 7, 50), -- GadgetZone
+-- Visitor 70
+(70, 8, 100), -- BookNook
+(70, 9, 30), -- SportsEmporium
+(70, 10, 70), -- CosmeticGlam
+-- Visitor 71
+(71, 11, 90), -- HomeDecor
+(71, 12, 80), -- ElectroMart
+-- Visitor 72
+(72, 13, 70), -- FancyFurniture
+-- Visitor 73
+(73, 14, 40), -- PetParadise
+-- Visitor 74
+(74, 15, 120), -- TechTrends
+(74, 16, 100), -- UrbanWear
+-- Visitor 75
+(75, 17, 60), -- ArtisticExpressions
+-- Visitor 76
+(76, 18, 140), -- FoodFiesta
+(76, 19, 70), -- FashionHub
+-- Visitor 77
+(77, 20, 90), -- GizmoGalaxy
+(77, 21, 80), -- OutdoorsUnlimited
+(77, 22, 90), -- GameGalore
+-- Visitor 78
+(78, 1, 70), -- ZooGifts
+(78, 2, 140), -- Safari Supplies
+(78, 3, 70), -- SuperMart
+-- Visitor 79
+(79, 4, 100), -- FashionTrends
+(79, 5, 110), -- ToyWorld
+-- Visitor 80
+(80, 6, 60), -- HealthyBites
+-- Visitor 81
+(81, 7, 40), -- GadgetZone
+-- Visitor 82
+(82, 8, 90), -- BookNook
+(82, 9, 50), -- SportsEmporium
+(82, 10, 80), -- CosmeticGlam
+-- Visitor 83
+(83, 11, 80), -- HomeDecor
+(83, 12, 90), -- ElectroMart
+-- Visitor 84
+(84, 13, 60), -- FancyFurniture
+-- Visitor 85
+(85, 14, 30), -- PetParadise
+-- Visitor 86
+(86, 15, 110), -- TechTrends
+(86, 16, 90), -- UrbanWear
+-- Visitor 87
+(87, 17, 70), -- ArtisticExpressions
+-- Visitor 88
+(88, 18, 130), -- FoodFiesta
+(88, 19, 60), -- FashionHub
+-- Visitor 89
+(89, 20, 100), -- GizmoGalaxy
+(89, 21, 70), -- OutdoorsUnlimited
+(89, 22, 80), -- GameGalore
+-- Visitor 90
+(90, 1, 90), -- ZooGifts
+(90, 2, 130), -- Safari Supplies
+(90, 3, 60), -- SuperMart
+-- Visitor 91
+(91, 4, 90), -- FashionTrends
+(91, 5, 120), -- ToyWorld
+-- Visitor 92
+(92, 6, 70), -- HealthyBites
+-- Visitor 93
+(93, 7, 50), -- GadgetZone
+-- Visitor 94
+(94, 8, 100), -- BookNook
+(94, 9, 30), -- SportsEmporium
+(94, 10, 70), -- CosmeticGlam
+-- Visitor 95
+(95, 11, 90), -- HomeDecor
+(95, 12, 80), -- ElectroMart
+-- Visitor 96
+(96, 13, 70), -- FancyFurniture
+-- Visitor 97
+(97, 14, 40), -- PetParadise
+-- Visitor 98
+(98, 15, 120), -- TechTrends
+(98, 16, 100), -- UrbanWear
+-- Visitor 99
+(99, 17, 60), -- ArtisticExpressions
+-- Visitor 100
+(100, 18, 140), -- FoodFiesta
+(100, 19, 70), -- FashionHub
+-- Visitor 101
+(101, 20, 90), -- GizmoGalaxy
+(101, 21, 80), -- OutdoorsUnlimited
+(101, 22, 90), -- GameGalore
+-- Visitor 102
+(102, 1, 70), -- ZooGifts
+(102, 2, 140), -- Safari Supplies
+(102, 3, 70), -- SuperMart
+-- Visitor 103
+(103, 4, 100), -- FashionTrends
+(103, 5, 110), -- ToyWorld
+-- Visitor 104
+(104, 6, 60), -- HealthyBites
+-- Visitor 105
+(105, 7, 40), -- GadgetZone
+-- Visitor 106
+(106, 8, 90), -- BookNook
+(106, 9, 50), -- SportsEmporium
+(106, 10, 80), -- CosmeticGlam
+-- Visitor 107
+(107, 11, 80), -- HomeDecor
+(107, 12, 90), -- ElectroMart
+-- Visitor 108
+(108, 13, 60), -- FancyFurniture
+-- Visitor 109
+(109, 14, 30), -- PetParadise
+-- Visitor 110
+(110, 15, 110), -- TechTrends
+(110, 16, 90), -- UrbanWear
+-- Visitor 111
+(111, 17, 70), -- ArtisticExpressions
+-- Visitor 112
+(112, 18, 130), -- FoodFiesta
+(112, 19, 60), -- FashionHub
+-- Visitor 113
+(113, 20, 100), -- GizmoGalaxy
+(113, 21, 70), -- OutdoorsUnlimited
+(113, 22, 80), -- GameGalore
+-- Visitor 114
+(114, 1, 90), -- ZooGifts
+(114, 2, 130), -- Safari Supplies
+(114, 3, 60), -- SuperMart
+-- Visitor 115
+(115, 4, 90), -- FashionTrends
+(115, 5, 120), -- ToyWorld
+-- Visitor 116
+(116, 6, 70), -- HealthyBites
+-- Visitor 117
+(117, 7, 50), -- GadgetZone
+-- Visitor 118
+(118, 8, 100), -- BookNook
+(118, 9, 30), -- SportsEmporium
+(118, 10, 70), -- CosmeticGlam
+-- Visitor 119
+(119, 11, 90), -- HomeDecor
+(119, 12, 80), -- ElectroMart
+-- Visitor 120
+(120, 13, 70), -- FancyFurniture
+-- Visitor 121
+(121, 14, 40), -- PetParadise
+-- Visitor 122
+(122, 15, 120), -- TechTrends
+(122, 16, 100), -- UrbanWear
+-- Visitor 123
+(123, 17, 60), -- ArtisticExpressions
+-- Visitor 124
+(124, 18, 140), -- FoodFiesta
+(124, 19, 70), -- FashionHub
+-- Visitor 125
+(125, 20, 90), -- GizmoGalaxy
+(125, 21, 80), -- OutdoorsUnlimited
+(125, 22, 90), -- GameGalore
+-- Visitor 126
+(126, 1, 70), -- ZooGifts
+(126, 2, 140), -- Safari Supplies
+(126, 3, 70), -- SuperMart
+-- Visitor 127
+(127, 4, 100), -- FashionTrends
+(127, 5, 110), -- ToyWorld
+-- Visitor 128
+(128, 6, 60), -- HealthyBites
+-- Visitor 129
+(129, 7, 40), -- GadgetZone
+-- Visitor 130
+(130, 8, 90), -- BookNook
+(130, 9, 50), -- SportsEmporium
+(130, 10, 80), -- CosmeticGlam
+-- Visitor 131
+(131, 11, 80), -- HomeDecor
+(131, 12, 90), -- ElectroMart
+-- Visitor 132
+(132, 13, 60), -- FancyFurniture
+-- Visitor 133
+(133, 14, 30), -- PetParadise
+-- Visitor 134
+(134, 15, 110), -- TechTrends
+(134, 16, 90), -- UrbanWear
+-- Visitor 135
+(135, 17, 70), -- ArtisticExpressions
+-- Visitor 136
+(136, 18, 130), -- FoodFiesta
+(136, 19, 60), -- FashionHub
+-- Visitor 137
+(137, 20, 100), -- GizmoGalaxy
+(137, 21, 70), -- OutdoorsUnlimited
+(137, 22, 80), -- GameGalore
+-- Visitor 138
+(138, 1, 90), -- ZooGifts
+(138, 2, 130), -- Safari Supplies
+(138, 3, 60), -- SuperMart
+-- Visitor 139
+(139, 4, 90), -- FashionTrends
+(139, 5, 120), -- ToyWorld
+-- Visitor 140
+(140, 6, 70), -- HealthyBites
+-- Visitor 141
+(141, 7, 50), -- GadgetZone
+-- Visitor 142
+(142, 8, 100), -- BookNook
+(142, 9, 30), -- SportsEmporium
+(142, 10, 70), -- CosmeticGlam
+-- Visitor 143
+(143, 11, 90), -- HomeDecor
+(143, 12, 80), -- ElectroMart
+-- Visitor 144
+(144, 13, 70), -- FancyFurniture
+-- Visitor 145
+(145, 14, 40), -- PetParadise
+-- Visitor 146
+(146, 15, 120), -- TechTrends
+(146, 16, 100), -- UrbanWear
+-- Visitor 147
+(147, 17, 60), -- ArtisticExpressions
+-- Visitor 148
+(148, 18, 140), -- FoodFiesta
+(148, 19, 70), -- FashionHub
+-- Visitor 149
+(149, 20, 90), -- GizmoGalaxy
+(149, 21, 80), -- OutdoorsUnlimited
+(149, 22, 90), -- GameGalore
+-- Visitor 150
+(150, 1, 70), -- ZooGifts
+(150, 2, 140), -- Safari Supplies
+(150, 3, 70); -- SuperMart
+
 
 create table Sponsor_Area_Acquired(
     Area_Acquired varchar(50) CHECK (Area_Acquired IN ('Zone A', 'Zone B', 'Zone C', 'Zone D', 'Zone E')),
