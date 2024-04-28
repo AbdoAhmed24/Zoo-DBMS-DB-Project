@@ -132,7 +132,7 @@ create table Exhibit(
     ('Giraffe Lands', 8, 'African Wildlife', 'Zone A', '1200', 'High', 1), -- Exhibit 12
     ('Grassland Rhinos', 6, 'African Savannah', 'Zone A', '2000', 'High', 1), -- Exhibit 13
     ('Mountain Goats', 10, 'Mountain Wildlife', 'Zone E', '2000', 'Medium', 1), -- Exhibit 14
-    ('Desert Dunes', 15, 'Desert Wildlife', 'Zone D', '1000', 'Medium', 1), -- Exhibit 15
+    ('Dusty Dunes', 15, 'Desert Wildlife', 'Zone D', '1000', 'Medium', 1), -- Exhibit 15
     ('Swamp Alligators', 8, 'Swamp Wildlife', 'Zone C', '1500', 'Medium', 1), -- Exhibit 16
     ('Tundra Polar Bears', 6, 'Arctic Wildlife', 'Zone E', '2000', 'High', 1); -- Exhibit 17
 
@@ -152,19 +152,23 @@ VALUES
 ('MediServe', 'info@mediserve.com'), -- Supplies Medical Equipment
 ('MedTech Solutions', 'info@medtechsolutions.com'); -- Supplies Medical Equipment
 
-
-
 create table Supplier_Phone(
     Company_Name varchar(50),
     Foreign Key(Company_name) references Supplier(Company_Name),
     Phone_No varchar(13) not null,
     primary key(Company_Name,Phone_No)
 );
+INSERT INTO Supplier_Phone (Company_Name, Phone_No)
+VALUES 
+('Meat & More Suppliers', '0123456789'),
+('Meat & More Suppliers', '0198765432'),
+('Green Fields Farms', '0987654321'),
+('SeaFresh Seafoods', '0123456789'),
+('Fruitful Delights', '0987654321'),
+('Natures Bounty', '0123456789'),
+('MediServe', '0987654321'),
+('MedTech Solutions', '0123456789');
 
-	INSERT INTO Supplier_Phone (Company_Name, Phone_No)
-    VALUES 
-    ('Fresh Food Co.', '0106403760'),
-    ('ZooSupply Inc.', '01172914838');
 
 create table Food(
     type varchar(50) primary key not null
@@ -188,16 +192,51 @@ create table Supplies(
 );
 
 	INSERT INTO Supplies (company_name, exhibit_no, Food_Type, Quantity)
-    VALUES 
-    ('Fresh Food Co.', 1, 'Meat', '100 kg'),
-    ('ZooSupply Inc.', 2, 'Fruit', '50 kg');
+VALUES 
+('Meat & More Suppliers', 1, 'Meat', '300 kg'), -- Savannah Lions
+('Meat & More Suppliers', 1, 'Chicken', '300 kg'), -- Savannah Lions
+('Meat & More Suppliers', 2, 'Meat', '200 kg'), -- Jungle Tigers
+('Meat & More Suppliers', 2, 'Chicken', '200 kg'), -- Jungle Tigers
+('Fruitful Delights', 3, 'Fruit', '250 kg'), -- Grassland Elephants
+('Green Fields Farms', 3, 'Grass', '400 kg'), -- Grassland Elephants
+('Green Fields Farms', 3, 'Hay', '400 kg'), -- Grassland Elephants
+('Fruitful Delights', 4, 'Insects', '300 kg'), -- Orangutan Rainforest
+('Natures Bounty', 5, 'Insects/Rodents', '250 kg'), -- Python Rainforest
+('Meat & More Suppliers', 6, 'Meat', '200 kg'), -- Panther Forest
+('SeaFresh Seafoods', 7, 'Fish', '150 kg'), -- Forest Bears
+('Fruitful Delights', 7, 'Fruit', '250 kg'), -- Forest Bears
+('Meat & More Suppliers', 8, 'Meat', '300 kg'), -- Gorilla Forest
+('Fruitful Delights', 8, 'Fruit', '250 kg'), -- Gorilla Forest
+('Green Fields Farms', 8, 'Hay', '300 kg'), -- Gorilla Forest
+('Meat & More Suppliers',9, 'Meat', '300 kg'), -- Wolf Woods
+('SeaFresh Seafoods', 10, 'Fish', '100kg'), -- Oceanic World
+('SeaFresh Seafoods', 10, 'Fish Food', '50kg'), -- Oceanic World
+('Green Fields Farms', 11, 'Hay', '500 kg'), -- Savannah Plains
+('Green Fields Farms', 11, 'Grass', '500 kg'), -- Savannah Plains
+('Fruitful Delights', 11, 'Fruits', '500 kg'), -- Savannah Plains
+('Fruitful Delights', 12, 'Fruits', '300 kg'), -- Giraffe Lands
+('Green Fields Farms', 12, 'Hay', '500 kg'), --Giraffe Lands
+('Green Fields Farms', 13, 'Grass', '500 kg'), -- Grassland Rhinos
+('Green Fields Farms', 13, 'Hay', '500 kg'), --GrassLands Rhinos
+('Green Fields Farms', 14, 'Grass', '500 kg'), -- Mountain Goats
+('Fruitful Delights', 15, 'Fruits', '300 kg'), -- Dusty Dunes
+('Green Fields Farms', 15, 'Hay', '500 kg'), --Dusty Dunes
+('Meat & More Suppliers', 16, 'Meat', '300 kg'), -- Swamp Alligators
+('SeaFresh Seafoods', 17, 'Fish', '400kg'), -- Tundra Polar Bears
+('Meat & More Suppliers', 17, 'Meat', '300 kg'); -- Tundra Polar Bears
 
 create table Equipment(
     Equipment_Number int primary key Identity (1,1) 
 );
 
-	INSERT INTO Equipment DEFAULT VALUES;
-	INSERT INTO Equipment DEFAULT VALUES;
+	INSERT INTO Equipment DEFAULT VALUES -- 1
+	INSERT INTO Equipment DEFAULT VALUES -- 2
+    INSERT INTO Equipment DEFAULT VALUES -- 3
+    INSERT INTO Equipment DEFAULT VALUES -- 4
+    INSERT INTO Equipment DEFAULT VALUES -- 5
+    INSERT INTO Equipment DEFAULT VALUES -- 6
+    INSERT INTO Equipment DEFAULT VALUES -- 7
+    INSERT INTO Equipment DEFAULT VALUES -- 8
 
 create table Clinic(
     Clinic_No int primary key Identity (1,1),
@@ -250,8 +289,14 @@ create table Provides(
 
 	INSERT INTO Provides (company_name, clinic_no, equipment_no, Quantity)
     VALUES 
-    ('Medical Supplies Ltd.', 1, 1, '10'),
-    ('Medical Supplies Ltd.', 1, 2, '5');
+    ('MediServe', 5, 3, '10'), -- Medical Supplies Ltd. providing 10 units of equipment 3 to Medical Clinic C
+    ('MediServe', 6, 4, '12'), -- Medical Supplies Ltd. providing 12 units of equipment 4 to Urgent Care D
+    ('MedTech Solutions', 7, 5, '8'), -- Medical Supplies Ltd. providing 8 units of equipment 5 to Wellness Center E
+    ('MedTech Solutions', 8, 6, '14'), -- Medical Supplies Ltd. providing 14 units of equipment 6 to Community Clinic F
+    ('MedTech Solutions', 9, 7, '18'), -- Medical Supplies Ltd. providing 18 units of equipment 7 to Family Practice G
+    ('MediServe', 10, 8, '20'), -- Medical Supplies Ltd. providing 20 units of equipment 8 to Pediatric Clinic H
+    ('MediServe', 11, 1, '15'), -- Medical Supplies Ltd. providing 15 units of equipment 1 to Rehabilitation Center I
+    ('MedTech Solutions', 12, 2, '10'); -- Medical Supplies Ltd. providing 10 units of equipment 2 to Specialty Clinic J
 
 create table Staff(
     Manager_ID int ,
