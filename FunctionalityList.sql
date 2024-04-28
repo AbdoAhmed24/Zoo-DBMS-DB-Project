@@ -366,11 +366,6 @@ END
 exec GetExhibitAnimals @Exhibit_No = 2
 
 --Diagnose Animal 
--- Add Status column to Animal table
-ALTER TABLE Animal
-ADD Status varchar(255);
-
--- Create DiagnoseAnimal procedure
 go
 CREATE PROCEDURE DiagnoseAnimal
     @Animal_Id int,
@@ -381,22 +376,50 @@ CREATE PROCEDURE DiagnoseAnimal
     @Clinic_No int
 AS
 BEGIN
-    -- Update Status in Animal table
+
     UPDATE Animal
     SET Status = @Status
     WHERE Animal_Id = @Animal_Id
 
-    -- Insert into Medical_History table
     INSERT INTO Medical_History (Animal_Id, Diagnosis, Diagnosis_Date)
     VALUES (@Animal_Id, @Diagnosis, @Date_Diagnosed)
 
-    -- Insert into Goes_To table
+
     INSERT INTO Goes_To (animal_id, clinic_no, Event_Type, Event_Date)
     VALUES (@Animal_Id, @Clinic_No, @Event_Type, @Date_Diagnosed)
 END
 --DiagnoseAnimal Test
 EXEC DiagnoseAnimal @Animal_Id = 2, @Status = 'Healthy', @Diagnosis = 'Routine Checkup', @Date_Diagnosed = '2022-02-01', @Event_Type = 'Checkup', @Clinic_No = 1
 
+--Treat Animal 
+go
+CREATE PROCEDURE TreatAnimal
+    @Animal_Id int,
+    @Diagnosis varchar(255),
+    @Treatment_Date date,
+    @Clinic_No int,
+    @Event_Type varchar(255)
+AS
+BEGIN
+    UPDATE Animal
+    SET Status = 'Healthy'
+    WHERE Animal_Id = @Animal_Id
+
+
+    UPDATE Medical_History
+    SET Treatment_Date = @Treatment_Date
+    WHERE Animal_Id = @Animal_Id AND Diagnosis = @Diagnosis
+
+    INSERT INTO Goes_To (animal_id, clinic_no, Event_Type, Event_Date)
+    VALUES (@Animal_Id, @Clinic_No, @Event_Type, @Treatment_Date)
+END
+-- Treat Animal Test
+EXEC TreatAnimal 
+    @Animal_Id = 2, 
+    @Diagnosis = 'Routine Checkup', 
+    @Treatment_Date = '2022-03-01', 
+    @Clinic_No = 2,
+    @Event_Type = 'Vaccination'
 
 go
 CREATE PROCEDURE TransferStaff 

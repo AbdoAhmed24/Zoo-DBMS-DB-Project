@@ -125,11 +125,11 @@ create table Clinic(
 create table Goes_To(
     animal_id int,
     clinic_no int,
-    Event_Type varchar(50) not null CHECK (Event_Type IN ('Checkup', 'Surgery', 'Vaccination')),
+    Event_Type varchar(50) not null CHECK (Event_Type IN ('Checkup', 'Surgery', 'Vaccination',"Treatement")),
     Event_Date Date,
     Foreign Key(animal_id) references Animal(Animal_Id),
     Foreign Key(clinic_no) references Clinic(Clinic_No),
-    primary key(animal_id,clinic_no)
+    primary key(animal_id,clinic_no,Event_Date)
 )
     
         INSERT INTO Goes_To (animal_id, clinic_no, Event_Type, Event_Date)
