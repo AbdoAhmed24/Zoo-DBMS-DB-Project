@@ -525,6 +525,69 @@ BEGIN
     SELECT * FROM Goes_To
 END
 
+--Remove Shop
+GO
+CREATE PROCEDURE RemoveShop @ShopNo INT
+AS
+BEGIN
+    DECLARE @NewShopNo INT
+
+    SELECT TOP 1 @NewShopNo = Shop_No FROM Shop WHERE Shop_No <> @ShopNo
+
+    IF @NewShopNo IS NOT NULL
+    BEGIN
+        UPDATE Staff SET Shop_NO = @NewShopNo WHERE Shop_NO = @ShopNo
+
+        DELETE FROM Sponsor WHERE shop_no = @ShopNo
+        DELETE FROM transacts WHERE shop_no = @ShopNo
+        DELETE FROM Shop WHERE Shop_No = @ShopNo
+
+    END
+    Select * from Shop
+END
+
+--Cancel Sponsor
+GO
+CREATE PROCEDURE CancelSponsor @SponsorId INT
+AS
+BEGIN
+    DELETE FROM Sponsor_Area_Acquired WHERE sponsor_id = @SponsorId
+    DELETE FROM Sponsor_Phone WHERE Sponsor_ID = @SponsorId
+    DELETE FROM Sponsor WHERE Sponsor_ID = @SponsorId
+END
+
+
+--Release Animal
+GO
+create procedure ReleaseAnimal(@Animal_Id int)
+as
+begin
+    delete from Medical_History where Animal_Id = @Animal_Id
+    delete from Goes_To where animal_id = @Animal_Id
+    delete from Animal where Animal_Id = @Animal_Id
+    select * from Animal
+end
+
+--Get Total Donations in Location
+GO
+create procedure GetTotalDonationsInLocation(@Location varchar(50))
+AS
+BEGIN
+    SELECT SUM(Amount) AS TotalDonations
+    FROM Donation
+    WHERE Location = @Location
+END
+
+
+--Get Shop Revenue
+GO
+create procedure GetShopRevenue(@ShopNo int)
+AS
+BEGIN
+    SELECT SUM(Transaction_Value) AS TotalRevenue
+    FROM transacts
+    WHERE shop_no = @ShopNo
+END
 
 
 go
@@ -571,5 +634,4 @@ FROM
     Staff
 GROUP BY
     Role;
-
 
