@@ -114,16 +114,29 @@ create table Clinic(
     Location varchar(50),
     Capacity int,
     Operating_Hours varchar(30),
-    Event_Type varchar(50) not null CHECK (Event_Type IN ('Check-Up', 'Surgery')),
-    Event_Date Date,
     CManager_Id int not null,
 );
 
-	INSERT INTO Clinic (Location, Capacity, Operating_Hours, Event_Type, Event_Date, CManager_Id)
+	INSERT INTO Clinic (Location, Capacity, Operating_Hours, CManager_Id)
     VALUES 
-    ('Veterinary Clinic', 20, '9:00 AM - 5:00 PM', 'Check-Up', '2024-04-27', 1),
-    ('Surgical Clinic', 15, '8:00 AM - 4:00 PM', 'Surgery', '2024-04-27', 2);
+    ('Veterinary Clinic', 20, '9:00 AM - 5:00 PM', '2024-04-27', 1),
+    ('Surgical Clinic', 15, '8:00 AM - 4:00 PM','2024-04-27', 2);
 
+create table Goes_To(
+    animal_id int,
+    clinic_no int,
+    Event_Type varchar(50) not null CHECK (Event_Type IN ('Checkup', 'Surgery', 'Vaccination')),
+    Event_Date Date,
+    Foreign Key(animal_id) references Animal(Animal_Id),
+    Foreign Key(clinic_no) references Clinic(Clinic_No),
+    primary key(animal_id,clinic_no)
+)
+    
+        INSERT INTO Goes_To (animal_id, clinic_no, Event_Type, Event_Date)
+        VALUES 
+        (1, 1, 'Checkup', '2024-04-27'),
+        (2, 2, 'Surgery', '2024-04-27');
+        
 create table Provides(
     company_name varchar(50),
     clinic_no int,
