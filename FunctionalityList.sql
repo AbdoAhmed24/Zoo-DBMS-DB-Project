@@ -515,3 +515,34 @@ FROM
 GROUP BY 
     shop_no;
 
+--GetManagers View
+go
+CREATE VIEW GetManagers AS
+SELECT 
+    ID, 
+    Fname, 
+    Lname, 
+    Role,
+    salary
+FROM
+    Staff
+WHERE 
+    Manager_ID IS NULL;
+--GetManagers Test
+go
+SELECT * FROM GetManagers;
+
+--GetRoleCount
+go
+CREATE VIEW GetRoleCount AS
+SELECT 
+    Role, 
+    COUNT(ID) AS NumberOfEmployees
+FROM    
+    Staff
+GROUP BY
+    Role;
+--GetRoleCount Test
+go
+SELECT * FROM GetRoleCount;
+
