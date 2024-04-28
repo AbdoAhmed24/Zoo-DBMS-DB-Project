@@ -204,7 +204,17 @@ create table Clinic(
 	INSERT INTO Clinic (Location, Capacity, Operating_Hours, CManager_Id)
     VALUES 
     ('Veterinary Clinic', 20, '9:00 AM - 5:00 PM', 1),
-    ('Surgical Clinic', 15, '8:00 AM - 4:00 PM',2);
+    ('Surgical Clinic', 15, '8:00 AM - 4:00 PM',2),
+    ('Hospital A', 100, '8:00 AM - 5:00 PM', 1),
+    ('Health Center B', 80, '9:00 AM - 6:00 PM', 2),
+    ('Medical Clinic C', 70, '7:30 AM - 4:30 PM', 3),
+    ('Urgent Care D', 60, '10:00 AM - 7:00 PM', 4),
+    ('Wellness Center E', 90, '8:30 AM - 5:30 PM', 5),
+    ('Community Clinic F', 85, '9:30 AM - 6:30 PM', 6),
+    ('Family Practice G', 75, '7:00 AM - 4:00 PM', 7),
+    ('Pediatric Clinic H', 65, '11:00 AM - 8:00 PM', 8),
+    ('Rehabilitation Center I', 80, '8:00 AM - 5:00 PM', 9),
+    ('Specialty Clinic J', 70, '9:00 AM - 6:00 PM', 10);
 
 create table Goes_To(
     animal_id int,
