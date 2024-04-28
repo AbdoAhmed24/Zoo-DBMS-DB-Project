@@ -12,15 +12,59 @@ create table Animal(
     Status varchar(50) not null,
     Diet_Type varchar(50),
     Date_of_Birth Date,
-    Family_Tree varchar(50),
+    Family_Tree int,
     Exhibit_no int not null
 );
 
-	INSERT INTO Animal (Animal_Name, Gender, Habitat, General_Name, Genus, Species, Status, Diet_Type, Date_of_Birth, Exhibit_no)
+	INSERT INTO Animal (Animal_Name, Gender, Habitat, General_Name, Genus, Species, Status, Diet_Type, Date_of_Birth,Family_Tree,Exhibit_no)
     VALUES 
-    ('Teddy', 'M', 'Savannah', 'Lion', 'Panthera', 'Leo', 'Healthy', 'Carnivore', '2015-07-15', 1),
-    ('Belle', 'F', 'Jungle', 'Tiger', 'Panthera', 'Tigris', 'Healthy', 'Carnivore', '2016-09-20', 2),
-    ('Lotso', 'M', 'Grassland', 'Elephant', 'Loxodonta', 'Africana', 'Wounded', 'Herbivore', '2014-12-10', 3);
+    ('Teddy', 'M', 'Savannah', 'Lion', 'Panthera', 'Leo', 'Healthy', 'Carnivore', '2015-07-15',Null, 1), --1
+('Belle', 'F', 'Jungle', 'Tiger', 'Panthera', 'Tigris', 'Healthy', 'Carnivore', '2016-09-20',2, 2), --2
+('Lotso', 'M', 'Grassland', 'Elephant', 'Loxodonta', 'Africana', 'Injured', 'Herbivore', '2014-12-10',3, 3),--3
+('Simba', 'M', 'Savannah', 'Lion', 'Panthera', 'Leo', 'Healthy', 'Carnivore', '2019-03-12', 1, 1), --4
+('Nala', 'F', 'Savannah', 'Lioness', 'Panthera', 'Leo', 'Healthy', 'Carnivore', '2020-06-25', 1, 1), --5
+('Mufasa', 'M', 'Savannah', 'Lion', 'Panthera', 'Leo', 'Sick', 'Carnivore', '2014-05-03', 1, 1), --6
+('Rajah', 'M', 'Jungle', 'Tiger', 'Panthera', 'Tigris', 'Healthy', 'Carnivore', '2018-11-04', 2, 2), --7
+('Shere Khan', 'M', 'Jungle', 'Tiger', 'Panthera', 'Tigris', 'Healthy', 'Carnivore', '2017-08-17', Null, 2), --8
+('Bagheera', 'M', 'Jungle', 'Black Panther', 'Panthera', 'Pardus', 'Healthy', 'Carnivore', '2019-03-27', Null, 6), --9
+('King Louie', 'M', 'Jungle', 'Orangutan', 'Pongo', 'Abelii', 'Healthy', 'Omnivore', '2018-08-14', Null, 4), --10
+('Kaa', 'F', 'Jungle', 'Python', 'Python', 'Molurus', 'Healthy', 'Carnivore', '2015-11-22', Null, 5), --11
+('Hathi', 'M', 'Grassland', 'Elephant', 'Elephas', 'Maximus', 'Healthy', 'Herbivore', '2017-04-30', 3, 3), --12
+('Rani', 'F', 'Grassland', 'Elephant', 'Elephas', 'Maximus', 'Pregnant', 'Herbivore', '2016-09-05', 3, 3), --13
+('Hathi Jr.', 'M', 'Grassland', 'Elephant', 'Elephas', 'Maximus', 'Healthy', 'Herbivore', '2018-11-11', 3, 3), --14
+('Yogi', 'M', 'Forest', 'Bear', 'Ursus', 'Arctos', 'Healthy', 'Omnivore', '2017-07-19', 4, 7), --15
+('Boo Boo', 'M', 'Forest', 'Bear', 'Ursus', 'Arctos', 'Healthy', 'Omnivore', '2019-04-26', 4, 7), --16
+('Kerchak', 'M', 'Forest', 'Gorilla', 'Gorilla', 'Gorilla', 'Healthy', 'Herbivore', '2016-10-02', 5, 8), --17
+('Araujo', 'M', 'Forest', 'Gorilla', 'Gorilla', 'Gorilla', 'Healthy', 'Herbivore', '2018-04-07', 5, 8), --18
+('Kala', 'F', 'Forest', 'Gorilla', 'Gorilla', 'Gorilla', 'Healthy', 'Herbivore', '2017-12-15', 5, 8), --19
+('Raksha', 'F', 'Forest', 'Wolf', 'Canis', 'Lupus', 'Healthy', 'Carnivore', '2018-03-08', 6, 9), --20
+('Akela', 'M', 'Forest', 'Wolf', 'Canis', 'Lupus', 'Healthy', 'Carnivore', '2015-09-21', 6, 9), --21
+('Marlin', 'M', 'Ocean', 'Fish', 'Paracanthurus', 'Hepatus', 'Healthy', 'Omnivore', '2017-10-03', Null, 10), --22
+('Nemo', 'M', 'Ocean', 'Clownfish', 'Amphiprion', 'Ocellaris', 'Healthy', 'Omnivore', '2018-12-01', Null, 10), --23
+('Dory', 'F', 'Ocean', 'Fish', 'Paracanthurus', 'Hepatus', 'Healthy', 'Omnivore', '2018-02-17', Null, 10), --24
+('Ziggy', 'M', 'Grassland', 'Zebra', 'Equus', 'Zebra', 'Healthy', 'Herbivore', '2017-08-10', 7, 11), --25
+('Zara', 'F', 'Grassland', 'Zebra', 'Equus', 'Zebra', 'Healthy', 'Herbivore', '2019-05-21', 7, 11), --26
+('Gerald', 'M', 'Savannah', 'Giraffe', 'Giraffa', 'Camelopardalis', 'Healthy', 'Herbivore', '2016-12-05', 8, 12), --27
+('Gina', 'F', 'Savannah', 'Giraffe', 'Giraffa', 'Camelopardalis', 'Healthy', 'Herbivore', '2018-10-18', 8, 12), --28
+('Randy', 'M', 'Grassland', 'Rhino', 'Rhinoceros', 'Unicornis', 'Healthy', 'Herbivore', '2015-09-07', 9, 13), --29
+('Rhonda', 'F', 'Grassland', 'Rhino', 'Rhinoceros', 'Unicornis', 'Healthy', 'Herbivore', '2017-04-14', 9, 13), --30
+('Rocky', 'M', 'Mountain', 'Mountain Goat', 'Oreamnos', 'Americanus', 'Healthy', 'Herbivore', '2017-10-15', NULL, 14), --31
+('Ruby', 'F', 'Mountain', 'Mountain Goat', 'Oreamnos', 'Americanus', 'Healthy', 'Herbivore', '2019-02-28', NULL, 14), --32
+('Messi','M', 'Mountain', 'Mountain Goat','Oreamnos', 'Americanus', 'Healthy', 'Herbivore', '2020-06-24', NULL, 14), --33
+('Spike', 'M', 'Desert', 'Camel', 'Camelus', 'Dromedarius', 'Healthy', 'Herbivore', '2016-06-09',10, 15), --34
+('Sandy', 'F', 'Desert', 'Camel', 'Camelus', 'Dromedarius', 'Sick', 'Herbivore', '2018-08-22', 10, 15), --35
+('Toby', 'M', 'Jungle', 'Tiger', 'Panthera', 'Tigris', 'Healthy', 'Carnivore', '2020-01-04', 2, 2), --36
+('Tina', 'F', 'Jungle', 'Tiger', 'Panthera', 'Tigris', 'Injured', 'Carnivore', '2019-07-17', 2, 2), --37
+('Buddy', 'M', 'Swamp', 'Alligator', 'Alligator', 'Mississippiensis', 'Healthy', 'Carnivore', '2018-11-29', NULL, 16), --38
+('Betty', 'F', 'Swamp', 'Alligator', 'Alligator', 'Mississippiensis', 'Healthy', 'Carnivore', '2017-05-12', NULL, 16), --39
+('Max', 'M', 'Tundra', 'Polar Bear', 'Ursus', 'Maritimus', 'Healthy', 'Carnivore', '2015-12-08', 11, 18), --40
+('Mia', 'F', 'Tundra', 'Polar Bear', 'Ursus', 'Maritimus', 'Pregnant', 'Carnivore', '2016-08-25', 11, 18), --41
+('Adam', 'M', 'Savannah', 'Ostrich', 'Struthio', 'Camelus', 'Healthy', 'Herbivore', '2017-12-05', Null, 11), --42
+('Eve', 'F', 'Savannah', 'Ostrich', 'Struthio', 'Camelus', 'Healthy', 'Herbivore', '2019-02-14', Null, 11), --43
+('Gaza', 'M', 'Savannah', 'Gazelle', 'Gazella', 'Dorcas', 'Healthy', 'Herbivore', '2018-11-07', Null, 11), --44
+('Aisha', 'F', 'Savannah', 'Gazelle', 'Gazella', 'Dorcas', 'Healthy', 'Herbivore', '2019-09-02', Null, 11); --45
+
+
 
 create table Medical_History(
     Animal_Id int not null,
@@ -33,9 +77,34 @@ create table Medical_History(
 
     INSERT INTO Medical_History (Animal_Id, Diagnosis, Diagnosis_Date, Treatment_Date)
     VALUES 
-    (1, 'Minor Wound', '2023-05-10', '2023-05-11'),
-    (2, 'Respiratory Infection', '2023-06-20', '2023-06-21'),
-    (3, 'Leg Injury', '2023-07-15', NULL);
+    (3, 'Gunshot Wound', '2023-04-15','2023-05-12' ), -- Lotso (Wounded)
+    (3, 'Fractured Leg', '2023-07-03', NULL), -- Lotso (Wounded) - Additional Medical History
+    (6, 'Influenza', '2023-05-20', '2023-05-21'), -- Mufasa (Sick)
+    (6, 'Fever', '2023-06-10', Null), -- Mufasa (Sick) - Additional Medical History
+    (11, 'Snake Bite', '2023-09-10', '2023-09-11'), -- Kaa (Healthy)
+    (15, 'Minor Infection', '2023-08-01', '2023-08-02'), -- Yogi (Healthy)
+    (15, 'Scratched Paw', '2023-09-05', '2023-09-18'), -- Yogi (Healthy) - Additional Medical History
+    (16, 'Minor Infection', '2023-09-05', '2023-09-06'), -- Boo Boo (Healthy)
+    (17, 'Respiratory Infection', '2023-06-01', '2023-06-02'), -- Kerchak (Healthy)
+    (18, 'Injury', '2023-04-05', '2023-04-06'), -- Kala (Healthy)
+    (20, 'Sprained Ankle', '2023-07-15', '2023-07-16'), -- Raksha (Healthy)
+    (21, 'Fever', '2023-08-10', '2023-08-23'), -- Akela (Healthy)
+    (21, 'Minor Cut', '2023-08-30','2023-09-23' ), -- Akela (Healthy) - Additional Medical History
+    (22, 'Scratched Fin', '2023-09-20', '2023-09-21'), -- Marlin (Healthy)
+    (23, 'Swim Bladder Disorder', '2023-10-05', '2023-10-15'), -- Nemo (Healthy)
+    (23, 'Food Allergy', '2023-11-01', '2023-11-14'), -- Nemo (Healthy) - Additional Medical History
+    (24, 'Food Poisoning', '2023-08-25', '2023-08-26'), -- Dory (Healthy)
+    (28, 'Eye Infection', '2023-06-15', '2023-06-16'), -- Ziggy (Healthy)
+    (29, 'Muscle Strain', '2023-07-01', '2023-07-02'), -- Zara (Healthy)
+    (30, 'Hypertension', '2023-05-10', '2023-05-11'), -- Gerald (Healthy)
+    (32, 'Skin Allergy', '2023-07-25', '2023-08-03'), -- Rocky (Healthy)
+    (32, 'Minor Cut', '2023-08-23', '2023-09-13'), -- Rocky (Healthy) - Additional Medical History
+    (34, 'Respiratory Infection', '2023-09-01', '2023-09-02'), -- Toby (Healthy)
+    (35, 'Minor Injury', '2023-08-15', Null), -- Tina (Injured)
+    (36, 'Eye Infection', '2023-04-10', '2023-04-11'), -- Buddy (Healthy)
+    (37, 'Minor Infection', '2023-03-25', '2023-03-26'), -- Betty (Healthy)
+    (39, 'Frostbite', '2023-11-10', '2023-11-11'); -- Mia (Pregnant)
+
 
 create table Exhibit(
     Exhibit_No Int primary key Identity (1,1),
