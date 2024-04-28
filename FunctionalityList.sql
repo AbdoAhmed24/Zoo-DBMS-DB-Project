@@ -209,8 +209,9 @@ CREATE PROCEDURE AddClinic
     @CManager_Id INT
 AS
 BEGIN
-    INSERT INTO Clinic (Location, Capacity, Operating_Hours, Event_Type, Event_Date, CManager_Id) 
-    VALUES (@Location, @Capacity, @Operating_Hours, @Event_Type, @Event_Date, @CManager_Id);
+    INSERT INTO Clinic (Location, Capacity, Operating_Hours, CManager_Id) 
+    VALUES (@Location, @Capacity, @Operating_Hours, @CManager_Id);
+    SELECT * FROM Clinic;
 END;
 
 --Add Shop
@@ -421,6 +422,7 @@ EXEC TreatAnimal
     @Clinic_No = 2,
     @Event_Type = 'Vaccination'
 
+--Transfer Staff
 go
 CREATE PROCEDURE TransferStaff 
     @staff_id INT, 
@@ -475,6 +477,7 @@ BEGIN
             UPDATE Staff SET Shop_No = @new_location_no, Clinic_No = NULL, Exhibit_No = NULL WHERE ID = @staff_id;
 			UPDATE Shop SET SManager_Id = @substitutional_manager_id WHERE Shop_No = @old_location_no;
         END
+        SELECT * FROM Staff;
     END
     ELSE
     BEGIN
@@ -490,7 +493,8 @@ BEGIN
         ELSE IF @new_location_type = 'Shop'
         BEGIN
 			UPDATE Staff SET Shop_No = @new_location_no, Clinic_No = NULL, Exhibit_No = NULL, Manager_ID = (SELECT SManager_Id FROM Shop WHERE Shop_No = @new_location_no) WHERE ID = @staff_id;
-        END	
+        END
+        SELECT * FROM Staff;	
     END
 END;
 
@@ -522,7 +526,34 @@ END;
 --Destroy Exhibit Test
 EXEC DestroyExhibit @old_exhibit_id = 1, @new_exhibit_id = 2
 
+--Delete a clinic
+go
+CREATE PROCEDURE CloseClinic @ClinicNo INT
+AS
+BEGIN
+    DECLARE @NewClinicNo INT
 
+    SELECT TOP 1 @NewClinicNo = Clinic_No FROM Clinic WHERE Clinic_No <> @ClinicNo
+
+    IF @NewClinicNo IS NOT NULL
+    BEGIN
+        UPDATE Staff SET Clinic_NO = @NewClinicNo WHERE Clinic_NO = @ClinicNo
+
+		DELETE FROM Goes_To WHERE clinic_no = @ClinicNo
+        DELETE FROM Clinic WHERE Clinic_No = @ClinicNo
+    END
+    Select * from Clinic
+END
+
+--Add clinic Event
+go
+CREATE PROCEDURE AddClinicEvent @AnimalId INT, @ClinicId INT, @EventType VARCHAR(50), @EventDate DATE
+AS
+BEGIN
+    INSERT INTO Goes_To (animal_id, clinic_no, Event_Type, Event_Date)
+    VALUES (@AnimalId, @ClinicId, @EventType, @EventDate)
+    SELECT * FROM Goes_To
+END
 
 
 

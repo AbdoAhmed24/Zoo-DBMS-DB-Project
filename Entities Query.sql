@@ -125,7 +125,7 @@ create table Clinic(
 create table Goes_To(
     animal_id int,
     clinic_no int,
-    Event_Type varchar(50) not null CHECK (Event_Type IN ('Checkup', 'Surgery', 'Vaccination',"Treatement")),
+    Event_Type varchar(50) not null CHECK (Event_Type IN ('Checkup', 'Surgery', 'Vaccination','Treatement')),
     Event_Date Date,
     Foreign Key(animal_id) references Animal(Animal_Id),
     Foreign Key(clinic_no) references Clinic(Clinic_No),
@@ -276,10 +276,10 @@ create table transacts(
     primary key(ticket_No, shop_no, Transaction_No)
 );
 
-INSERT INTO transacts (ticket_no, shop_no, Transaction_No, Transaction_Value)
+INSERT INTO transacts (ticket_no, shop_no, Transaction_Value)
     VALUES 
-    (1, 1, 1, 50),
-    (2, 2, 1, 200);
+    (1, 1, 50),
+    (2, 2, 200);
 
 create table Sponsor_Area_Acquired(
     Area_Acquired varchar(50) CHECK (Area_Acquired IN ('Zone A', 'Zone B', 'Zone C', 'Zone D', 'Zone E')),
@@ -313,3 +313,4 @@ Foreign Key (SManager_Id) References Staff(ID);
 ALTER TABLE Staff
 ADD CONSTRAINT FK_Shop_NO
 FOREIGN KEY (Shop_NO) REFERENCES Shop(Shop_No);
+
