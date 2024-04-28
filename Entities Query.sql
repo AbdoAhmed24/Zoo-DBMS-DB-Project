@@ -42,7 +42,7 @@ create table Exhibit(
     Exhibit_Name varchar(50) not null,
     Capacity int not null,
     Theme varchar(50),
-    Location varchar(50),
+    Location varchar(50) CHECK( Location In ('Zone A', 'Zone B', 'Zone C', 'Zone D', 'Zone E')),
     Size varchar(50) not null,
     Security_Level varchar(50),
     EManager_Id int not null,

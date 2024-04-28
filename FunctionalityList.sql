@@ -14,6 +14,7 @@ exec SalaryRaise @Raise= 20, @ID = 1
 
 
 --SalaryDeduction
+go
 create procedure SalaryDeduction(@Deduction int , @ID int )
 as
 begin
@@ -27,6 +28,7 @@ end;
 exec SalaryDeduction @Deduction= 20, @ID = 1
 
 --AddAnimal
+go
 create procedure AddAnimal(@Animal_Name varchar(50),@Gender varchar(1),@Habitat varchar(50),@General_Name varchar(50),@Genus varchar(50),@Species varchar(50),@Status varchar(50),@Diet_Type varchar(50),@Date_of_Birth Date,@FamilyTree int = NULL,@Exhibit_no int)
 as
 begin
@@ -38,6 +40,7 @@ end;
 exec AddAnimal @Animal_Name = 'Mosaad', @Gender = 'M', @Habitat = 'Savannah', @General_Name = 'Zebra', @Genus = 'Equus', @Species = 'Zebra', @Status = 'Healthy', @Diet_Type = 'Herbivore', @Date_of_Birth = '2019-01-01', @Exhibit_no = 3
 
 --TransferAnimal
+go
 create procedure TransferAnimal(
     @Animal_ID int,
     @Exhibit_no int)
@@ -217,3 +220,158 @@ BEGIN
     INSERT INTO Clinic (Location, Capacity, Operating_Hours, Event_Type, Event_Date, CManager_Id) 
     VALUES (@Location, @Capacity, @Operating_Hours, @Event_Type, @Event_Date, @CManager_Id);
 END;
+
+--Add Shop
+go 
+CREATE PROCEDURE AddShop
+    @Shop_Name varchar(50),
+    @Location varchar(50),
+    @Product_Category varchar(50),
+    @SManager_Id int
+AS
+begin 
+    -- Insert into Shop table
+    INSERT INTO Shop (Shop_Name, Location, Product_Category, SManager_Id)
+    VALUES (@Shop_Name, @Location, @Product_Category, @SManager_Id)
+    Select * from Shop
+end
+--Add Shop Test
+exec AddShop @Shop_Name = 'Toys R Us', @Location = 'Zone A', @Product_Category = 'Gifts & Toys', @SManager_Id = 1
+
+
+
+
+
+--Add Sponsor
+ go 
+ CREATE PROCEDURE AddSponsor
+    @Sponsor_Name varchar(50),
+    @Email varchar(50),
+    @Start_Date Date,
+    @End_Date Date,
+    @Shop_Name varchar(50) = NULL,
+    @Location varchar(50) = NULL,
+    @Product_Category varchar(50) = NULL,
+    @SManager_Id int = NULL,
+    @Phone_Number varchar(13)
+AS
+BEGIN
+    DECLARE @shop_no int = NULL
+
+    IF @Shop_Name IS NOT NULL AND @Location IS NOT NULL AND @Product_Category IS NOT NULL AND @SManager_Id IS NOT NULL
+    BEGIN
+        EXEC AddShop @Shop_Name, @Location, @Product_Category, @SManager_Id
+
+        
+        SET @shop_no = (SELECT TOP 1 shop_no FROM Shop WHERE Shop_Name = @Shop_Name AND Location = @Location AND Product_Category = @Product_Category AND SManager_Id = @SManager_Id ORDER BY shop_no DESC)
+    END
+
+    INSERT INTO Sponsor (Sponsor_Name, Email, Start_Date, End_Date, shop_no)
+    VALUES (@Sponsor_Name, @Email, @Start_Date, @End_Date, @shop_no)
+
+    INSERT INTO Sponsor_Phone (Sponsor_ID, Phone_Number)
+    VALUES ((SELECT TOP 1 Sponsor_ID FROM Sponsor WHERE Sponsor_Name = @Sponsor_Name AND Email = @Email AND shop_no = @shop_no ORDER BY Sponsor_ID DESC), @Phone_Number)
+END
+--Add Sponsor Test
+EXEC AddSponsor @Sponsor_Name = 'Simon', @Email = 'simon@email.com', @Start_Date = '2022-01-01', @End_Date = '2022-12-31', @Shop_Name = 'ZooGifts', @Location = 'Zone A', @Product_Category = 'Gifts & Toys', @SManager_Id = 3, @Phone_Number = '555-555-5555'
+
+--Create Exhibit
+go
+CREATE PROCEDURE CreateExhibit
+    @Exhibit_Name varchar(50),
+    @Capacity int,
+    @Theme varchar(50),
+    @Location varchar(50),
+    @Size varchar(50),
+    @Security_Level varchar(50),
+    @EManager_Id int
+AS
+BEGIN
+    INSERT INTO Exhibit (Exhibit_Name, Capacity, Theme, Location, Size, Security_Level, EManager_Id)
+    VALUES (@Exhibit_Name, @Capacity, @Theme, @Location, @Size, @Security_Level, @EManager_Id)
+    SELECT * FROM Exhibit
+END
+--Create Exhibit Test
+EXEC CreateExhibit @Exhibit_Name = 'Savannah', @Capacity = 10, @Theme = 'African', @Location = 'Zone A', @Size = '100000', @Security_Level = 'High', @EManager_Id = 1
+
+--Order Animal Food
+go
+CREATE PROCEDURE OrderAnimalFood
+    @Company_Name varchar(50),
+    @Email varchar(50),
+    @Phone_No varchar(13),
+    @Food_Type varchar(50),
+    @Exhibit_No int = NULL ,
+    @Quantity VARCHAR = '100kg'
+AS
+BEGIN
+
+    INSERT INTO Supplier (Company_Name, Email)
+    VALUES (@Company_Name, @Email)
+
+    INSERT INTO Supplier_Phone (Company_Name, Phone_No)
+    VALUES (@Company_Name, @Phone_No)
+
+    INSERT INTO Supplies (company_name, exhibit_no, Food_Type, Quantity)
+    VALUES (@Company_Name, @Exhibit_No, @Food_Type, @Quantity)
+    
+    INSERT INTO Food (type)
+    VALUES (@Food_Type)
+
+    SELECT * FROM Supplies
+END
+--Order Animal Food Test
+EXEC OrderAnimalFood @Company_Name = 'FoodCo', @Email = 'contact@foodco.com', @Phone_No = '0123456789', @Food_Type = 'Grains', @Exhibit_No = 1, @Quantity = '100kg'
+
+--Order Equipment
+go
+CREATE PROCEDURE OrderEquipment
+    @Company_Name varchar(50),
+    @Email varchar(50),
+    @Phone_No varchar(13),
+    @Clinic_No int = NULL,
+    @Quantity int = 1
+AS
+BEGIN
+    INSERT INTO Supplier (Company_Name, Email)
+    VALUES (@Company_Name, @Email)
+
+    INSERT INTO Supplier_Phone (Company_Name, Phone_No)
+    VALUES (@Company_Name, @Phone_No)
+
+    INSERT INTO Equipment DEFAULT VALUES
+
+    DECLARE @Equipment_No int = @@IDENTITY
+
+    INSERT INTO Provides (company_name, clinic_no, equipment_no, Quantity)
+    VALUES (@Company_Name, @Clinic_No, @Equipment_No, @Quantity)
+
+    SELECT * FROM Provides
+END
+--Order Equipment Test
+exec OrderEquipment @Company_Name = 'EquipCo', @Email = 'contact@equipco.com', @Phone_No = '0123456789', @Clinic_No = 1, @Quantity = 1
+
+--Get Visitor's Donations
+go
+CREATE PROCEDURE GetVisitorDonations
+    @Visitor_Ticket int
+AS
+BEGIN
+    SELECT * FROM Donation WHERE Visitor_Ticket = @Visitor_Ticket
+END
+--Get Visitor's Donations Test
+exec GetVisitorDonations @Visitor_Ticket = 1
+
+--Get Exhibit's Animals
+go
+CREATE PROCEDURE GetExhibitAnimals
+    @Exhibit_No int
+AS
+BEGIN
+    SELECT * FROM Animal WHERE Exhibit_no = @Exhibit_No
+END
+--Get Exhibit's Animals Test
+exec GetExhibitAnimals @Exhibit_No = 2
+
+
+
