@@ -114,8 +114,6 @@ create table Exhibit(
     Security_Level varchar(50),
     EManager_Id int not null,
 );
-
-    -- Calculate and insert the size of each exhibit
     INSERT INTO Exhibit (Exhibit_Name, Capacity, Theme, Location, Size, Security_Level, EManager_Id)
     VALUES 
     ('Savannah Lions', 10, 'African Savannah', 'Zone A', '2500', 'High', 1), -- Exhibit 1
@@ -197,16 +195,16 @@ VALUES
 ('Beef & More Suppliers', 1, 'Chicken', '300 kg'), -- Savannah Lions
 ('Beef & More Suppliers', 2, 'Beef', '200 kg'), -- Jungle Tigers
 ('Beef & More Suppliers', 2, 'Chicken', '200 kg'), -- Jungle Tigers
-('Fruitful Delights', 3, 'Fruit', '250 kg'), -- Grassland Elephants
+('Fruitful Delights', 3, 'Fruits', '250 kg'), -- Grassland Elephants
 ('Green Fields Farms', 3, 'Grass', '400 kg'), -- Grassland Elephants
 ('Green Fields Farms', 3, 'Hay', '400 kg'), -- Grassland Elephants
 ('Fruitful Delights', 4, 'Insects/Rodents', '300 kg'), -- Orangutan Rainforest
 ('Natures Bounty', 5, 'Insects/Rodents', '250 kg'), -- Python Rainforest
 ('Beef & More Suppliers', 6, 'Beef', '200 kg'), -- Panther Forest
 ('SeaFresh Seafoods', 7, 'Fish', '150 kg'), -- Forest Bears
-('Fruitful Delights', 7, 'Fruit', '250 kg'), -- Forest Bears
+('Fruitful Delights', 7, 'Fruits', '250 kg'), -- Forest Bears
 ('Beef & More Suppliers', 8, 'Beef', '300 kg'), -- Gorilla Forest
-('Fruitful Delights', 8, 'Fruit', '250 kg'), -- Gorilla Forest
+('Fruitful Delights', 8, 'Fruits', '250 kg'), -- Gorilla Forest
 ('Green Fields Farms', 8, 'Hay', '300 kg'), -- Gorilla Forest
 ('Beef & More Suppliers',9, 'Beef', '300 kg'), -- Wolf Woods
 ('SeaFresh Seafoods', 10, 'Fish', '100kg'), -- Oceanic World
