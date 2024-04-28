@@ -589,6 +589,24 @@ BEGIN
     WHERE shop_no = @ShopNo
 END
 
+--GetAnimalsinFamilyTree
+go
+CREATE PROCEDURE GetAnimalsinFamilyTree AS
+BEGIN
+    SELECT 
+        Family_Tree, 
+        Animal_Name,
+        General_Name,
+        Genus,
+        Species
+    FROM
+        Animal
+    WHERE 
+        Family_Tree IS NOT NULL
+    ORDER BY 
+        Family_Tree;
+END;
+
 
 go
 CREATE VIEW ExhibitAnimalCount AS
