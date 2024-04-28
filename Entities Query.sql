@@ -142,12 +142,17 @@ create table Supplier(
     Company_Name varchar(50) primary key ,
     Email varchar(50)
 );
+INSERT INTO Supplier (Company_Name, Email)
+VALUES 
+('Meat & More Suppliers', 'info@meatandmore.com'), -- Supplies Beef and Chicken
+('Green Fields Farms', 'info@greenfields.com'), -- Supplies Hay and Grass
+('SeaFresh Seafoods', 'info@seafresh.com'), -- Supplies Fish and Fish Food
+('Fruitful Delights', 'info@fruitfuldelights.com'), -- Supplies Fruits
+('Natures Bounty', 'info@naturesbounty.com'), -- Supplies Insects and Fruits
+('MediServe', 'info@mediserve.com'), -- Supplies Medical Equipment
+('MedTech Solutions', 'info@medtechsolutions.com'); -- Supplies Medical Equipment
 
-    INSERT INTO Supplier (Company_Name, Email)
-    VALUES 
-    ('Fresh Food Co.', 'info@freshfoodco.com'),
-    ('ZooSupply Inc.', 'info@zoosupplyinc.com'),
-	('Medical Supplies Ltd.', 'info@medical.com');
+
 
 create table Supplier_Phone(
     Company_Name varchar(50),
@@ -164,11 +169,12 @@ create table Supplier_Phone(
 create table Food(
     type varchar(50) primary key not null
 );
-
-	INSERT INTO Food (type)
+	INSERT INTO Food (type) 
     VALUES 
-    ('Meat'),
-    ('Fruit');
+    ('Insects'), ('Chicken'), ('Beef'), 
+    ('Hay'), ('Grass'), ('Fruits'), 
+    ('Fish'), ('Fruits'), ('Insects/Rodents'),('Fish Food');
+
 
 create table Supplies(
     company_name varchar(50),
