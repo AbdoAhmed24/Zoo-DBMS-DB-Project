@@ -206,17 +206,9 @@ CREATE PROCEDURE AddClinic
     @Location VARCHAR(50), 
     @Capacity INT, 
     @Operating_Hours VARCHAR(30), 
-    @Event_Type VARCHAR(50), 
-    @Event_Date DATE, 
     @CManager_Id INT
 AS
 BEGIN
-    IF @Event_Type NOT IN ('Check-Up', 'Surgery')
-    BEGIN
-        RAISERROR('Invalid type. It should be either "Check-Up" or "Surgery".', 16, 1);
-        RETURN;
-    END
-
     INSERT INTO Clinic (Location, Capacity, Operating_Hours, Event_Type, Event_Date, CManager_Id) 
     VALUES (@Location, @Capacity, @Operating_Hours, @Event_Type, @Event_Date, @CManager_Id);
 END;
