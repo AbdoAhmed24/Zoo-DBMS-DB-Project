@@ -144,7 +144,7 @@ create table Supplier(
 );
 INSERT INTO Supplier (Company_Name, Email)
 VALUES 
-('Meat & More Suppliers', 'info@meatandmore.com'), -- Supplies Beef and Chicken
+('Beef & More Suppliers', 'info@meatandmore.com'), -- Supplies Beef and Chicken
 ('Green Fields Farms', 'info@greenfields.com'), -- Supplies Hay and Grass
 ('SeaFresh Seafoods', 'info@seafresh.com'), -- Supplies Fish and Fish Food
 ('Fruitful Delights', 'info@fruitfuldelights.com'), -- Supplies Fruits
@@ -160,8 +160,8 @@ create table Supplier_Phone(
 );
 INSERT INTO Supplier_Phone (Company_Name, Phone_No)
 VALUES 
-('Meat & More Suppliers', '0123456789'),
-('Meat & More Suppliers', '0198765432'),
+('Beef & More Suppliers', '0123456789'),
+('Beef & More Suppliers', '0198765432'),
 ('Green Fields Farms', '0987654321'),
 ('SeaFresh Seafoods', '0123456789'),
 ('Fruitful Delights', '0987654321'),
@@ -177,7 +177,7 @@ create table Food(
     VALUES 
     ('Insects'), ('Chicken'), ('Beef'), 
     ('Hay'), ('Grass'), ('Fruits'), 
-    ('Fish'), ('Fruits'), ('Insects/Rodents'),('Fish Food');
+    ('Fish'),('Insects/Rodents'),('Fish Food');
 
 
 create table Supplies(
@@ -193,22 +193,22 @@ create table Supplies(
 
 	INSERT INTO Supplies (company_name, exhibit_no, Food_Type, Quantity)
 VALUES 
-('Meat & More Suppliers', 1, 'Meat', '300 kg'), -- Savannah Lions
-('Meat & More Suppliers', 1, 'Chicken', '300 kg'), -- Savannah Lions
-('Meat & More Suppliers', 2, 'Meat', '200 kg'), -- Jungle Tigers
-('Meat & More Suppliers', 2, 'Chicken', '200 kg'), -- Jungle Tigers
+('Beef & More Suppliers', 1, 'Beef', '300 kg'), -- Savannah Lions
+('Beef & More Suppliers', 1, 'Chicken', '300 kg'), -- Savannah Lions
+('Beef & More Suppliers', 2, 'Beef', '200 kg'), -- Jungle Tigers
+('Beef & More Suppliers', 2, 'Chicken', '200 kg'), -- Jungle Tigers
 ('Fruitful Delights', 3, 'Fruit', '250 kg'), -- Grassland Elephants
 ('Green Fields Farms', 3, 'Grass', '400 kg'), -- Grassland Elephants
 ('Green Fields Farms', 3, 'Hay', '400 kg'), -- Grassland Elephants
 ('Fruitful Delights', 4, 'Insects', '300 kg'), -- Orangutan Rainforest
 ('Natures Bounty', 5, 'Insects/Rodents', '250 kg'), -- Python Rainforest
-('Meat & More Suppliers', 6, 'Meat', '200 kg'), -- Panther Forest
+('Beef & More Suppliers', 6, 'Beef', '200 kg'), -- Panther Forest
 ('SeaFresh Seafoods', 7, 'Fish', '150 kg'), -- Forest Bears
 ('Fruitful Delights', 7, 'Fruit', '250 kg'), -- Forest Bears
-('Meat & More Suppliers', 8, 'Meat', '300 kg'), -- Gorilla Forest
+('Beef & More Suppliers', 8, 'Beef', '300 kg'), -- Gorilla Forest
 ('Fruitful Delights', 8, 'Fruit', '250 kg'), -- Gorilla Forest
 ('Green Fields Farms', 8, 'Hay', '300 kg'), -- Gorilla Forest
-('Meat & More Suppliers',9, 'Meat', '300 kg'), -- Wolf Woods
+('Beef & More Suppliers',9, 'Beef', '300 kg'), -- Wolf Woods
 ('SeaFresh Seafoods', 10, 'Fish', '100kg'), -- Oceanic World
 ('SeaFresh Seafoods', 10, 'Fish Food', '50kg'), -- Oceanic World
 ('Green Fields Farms', 11, 'Hay', '500 kg'), -- Savannah Plains
@@ -221,9 +221,9 @@ VALUES
 ('Green Fields Farms', 14, 'Grass', '500 kg'), -- Mountain Goats
 ('Fruitful Delights', 15, 'Fruits', '300 kg'), -- Dusty Dunes
 ('Green Fields Farms', 15, 'Hay', '500 kg'), --Dusty Dunes
-('Meat & More Suppliers', 16, 'Meat', '300 kg'), -- Swamp Alligators
+('Beef & More Suppliers', 16, 'Beef', '300 kg'), -- Swamp Alligators
 ('SeaFresh Seafoods', 17, 'Fish', '400kg'), -- Tundra Polar Bears
-('Meat & More Suppliers', 17, 'Meat', '300 kg'); -- Tundra Polar Bears
+('Beef & More Suppliers', 17, 'Beef', '300 kg'); -- Tundra Polar Bears
 
 create table Equipment(
     Equipment_Number int primary key Identity (1,1) 
@@ -270,12 +270,35 @@ create table Goes_To(
     Foreign Key(clinic_no) references Clinic(Clinic_No),
     primary key(animal_id,clinic_no,Event_Date)
 )
-    
-        INSERT INTO Goes_To (animal_id, clinic_no, Event_Type, Event_Date)
-        VALUES 
-        (1, 1, 'Checkup', '2024-04-27'),
-        (2, 2, 'Surgery', '2024-04-27');
-        
+    INSERT INTO Goes_To (animal_id, clinic_no, Event_Type, Event_Date)
+    VALUES 
+    (3, 1, 'Surgery', '2023-04-15'), -- Lotso (Wounded) - Surgery
+    (3, 1, 'Treatment', '2023-07-03'), -- Lotso (Wounded) - Additional Treatment
+    (6, 1, 'Vaccination', '2023-05-20'), -- Mufasa (Sick) - Vaccination
+    (6, 1, 'Checkup', '2023-06-10'), -- Mufasa (Sick) - Checkup
+    (11, 1, 'Treatment', '2023-09-10'), -- Kaa (Healthy) - Treatment
+    (15, 1, 'Checkup', '2023-08-01'), -- Yogi (Healthy) - Checkup
+    (15, 1, 'Treatment', '2023-09-05'), -- Yogi (Healthy) - Treatment
+    (16, 1, 'Treatment', '2023-09-05'), -- Boo Boo (Healthy) - Treatment
+    (17, 1, 'Checkup', '2023-06-01'), -- Kerchak (Healthy) - Checkup
+    (18, 1, 'Treatment', '2023-04-05'), -- Kala (Healthy) - Treatment
+    (20, 1, 'Checkup', '2023-07-15'), -- Raksha (Healthy) - Checkup
+    (21, 1, 'Checkup', '2023-08-10'), -- Akela (Healthy) - Checkup
+    (21, 1, 'Treatment', '2023-08-30'), -- Akela (Healthy) - Treatment
+    (22, 1, 'Treatment', '2023-09-20'), -- Marlin (Healthy) - Treatment
+    (23, 1, 'Treatment', '2023-10-05'), -- Nemo (Healthy) - Treatment
+    (23, 1, 'Treatment', '2023-11-01'), -- Nemo (Healthy) - Additional Treatment
+    (24, 1, 'Treatment', '2023-08-25'), -- Dory (Healthy) - Treatment
+    (28, 1, 'Treatment', '2023-06-15'), -- Ziggy (Healthy) - Treatment
+    (29, 1, 'Treatment', '2023-07-01'), -- Zara (Healthy) - Treatment
+    (30, 1, 'Checkup', '2023-05-10'), -- Gerald (Healthy) - Checkup
+    (32, 1, 'Checkup', '2023-07-25'), -- Rocky (Healthy) - Checkup
+    (34, 1, 'Checkup', '2023-09-01'), -- Toby (Healthy) - Checkup
+    (35, 1, 'Treatment', '2023-08-15'), -- Tina (Injured) - Treatment
+    (36, 1, 'Treatment', '2023-04-10'), -- Buddy (Healthy) - Treatment
+    (37, 1, 'Treatment', '2023-03-25'), -- Betty (Healthy) - Treatment
+    (39, 1, 'Treatment', '2023-11-10'); -- Mia (Pregnant) - Treatment
+
 create table Provides(
     company_name varchar(50),
     clinic_no int,
@@ -388,8 +411,18 @@ create table Sponsor(
 
 	INSERT INTO Sponsor (Sponsor_Name, Email, Start_Date, End_Date, shop_no)
     VALUES 
-    ('ZooHealth Inc.', 'info@zoohealth.com', '2024-01-01', '2024-12-31', 1),
-    ('Wildlife Supplies Ltd.', 'info@wildlifesupplies.com', '2024-02-15', '2024-12-31', 2);
+    ('ZooHealth Inc.', 'info@zoohealth.com', '2024-01-01', '2024-12-31', 1), -- ZooGifts
+    ('Wildlife Supplies Ltd.', 'info@wildlifesupplies.com', '2024-02-15', '2024-12-31', 2), -- Safari Supplies
+    ('SunnyPets', 'info@sunnypets.com', '2024-03-20', '2024-12-31', NULL), -- No specific shop
+    ('EcoTrend', 'info@ecotrend.com', '2024-04-10', '2024-12-31', NULL), -- No specific shop
+    ('NatureNook', 'info@naturenook.com', '2024-05-05', '2024-12-31', NULL), -- No specific shop
+    ('GreenPaws', 'info@greenpaws.com', '2024-06-01', '2024-12-31', NULL), -- No specific shop
+    ('EcoElegance', 'info@ecoelegance.com', '2024-07-10', '2024-12-31', 4), -- SuperMart
+    ('EcoFriendly Finds', 'info@ecofriendlyfinds.com', '2024-08-15', '2024-12-31', 6), -- HealthyBites
+    ('PetParadise', 'info@petparadise.com', '2024-09-20', '2024-12-31', 13), -- PetParadise
+    ('WildlifeWonders', 'info@wildlifewonders.com', '2024-10-25', '2024-12-31', 15), -- ToyWorld
+    ('NaturalNurture', 'info@naturalnurture.com', '2024-11-30', '2024-12-31', 19); -- ArtisticExpressions
+
 
 create table Sponsor_Phone(
     Sponsor_ID int,
@@ -397,11 +430,18 @@ create table Sponsor_Phone(
     Phone_Number varchar(13) not null,
     primary key(Sponsor_ID,Phone_Number)
 );
-
 	INSERT INTO Sponsor_Phone (Sponsor_ID, Phone_Number)
     VALUES 
-    (1, '111-111-1111'),
-    (2, '222-222-2222');
+    (3, '333-333-3333'), -- SunnyPets
+    (4, '444-444-4444'), -- EcoTrend
+    (5, '555-555-5555'), -- NatureNook
+    (6, '666-666-6666'), -- GreenPaws
+    (7, '777-777-7777'), -- EcoElegance
+    (8, '888-888-8888'), -- EcoFriendly Finds
+    (9, '999-999-9999'), -- PetParadise
+    (10, '101-101-1010'), -- WildlifeWonders
+    (11, '202-202-2020'); -- NaturalNurture
+
 
 create table Visitor(
     Ticket_Number int primary key Identity (1,1),
