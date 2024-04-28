@@ -200,7 +200,7 @@ VALUES
 ('Fruitful Delights', 3, 'Fruit', '250 kg'), -- Grassland Elephants
 ('Green Fields Farms', 3, 'Grass', '400 kg'), -- Grassland Elephants
 ('Green Fields Farms', 3, 'Hay', '400 kg'), -- Grassland Elephants
-('Fruitful Delights', 4, 'Insects', '300 kg'), -- Orangutan Rainforest
+('Fruitful Delights', 4, 'Insects/Rodents', '300 kg'), -- Orangutan Rainforest
 ('Natures Bounty', 5, 'Insects/Rodents', '250 kg'), -- Python Rainforest
 ('Beef & More Suppliers', 6, 'Beef', '200 kg'), -- Panther Forest
 ('SeaFresh Seafoods', 7, 'Fish', '150 kg'), -- Forest Bears
@@ -264,7 +264,7 @@ create table Clinic(
 create table Goes_To(
     animal_id int,
     clinic_no int,
-    Event_Type varchar(50) not null CHECK (Event_Type IN ('Checkup', 'Surgery', 'Vaccination','Treatement')),
+    Event_Type varchar(50) not null CHECK (Event_Type IN ('Checkup', 'Surgery', 'Vaccination','Treatment')),
     Event_Date Date,
     Foreign Key(animal_id) references Animal(Animal_Id),
     Foreign Key(clinic_no) references Clinic(Clinic_No),
