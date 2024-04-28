@@ -494,6 +494,37 @@ BEGIN
     END
 END;
 
+--Destroy Exhibit
+go 
+CREATE PROCEDURE DestroyExhibit
+    @old_exhibit_id INT,
+    @new_exhibit_id INT
+AS
+BEGIN
+    DECLARE @old_count INT, @new_count INT, @new_capacity INT;
+
+    SELECT @old_count = COUNT(*) FROM Animal WHERE Exhibit_no = @old_exhibit_id;
+    SELECT @new_count = COUNT(*) FROM Animal WHERE Exhibit_no = @new_exhibit_id;
+    SELECT @new_capacity = Capacity FROM Exhibit WHERE Exhibit_no = @new_exhibit_id;
+
+    IF (@old_count + @new_count) > @new_capacity
+    BEGIN
+        RAISERROR('The new exhibit does not have enough capacity for all animals.', 16, 1);
+        RETURN;
+    END
+
+    UPDATE Animal SET Exhibit_no = @new_exhibit_id WHERE Exhibit_no = @old_exhibit_id;
+    UPDATE Supplies SET Exhibit_no = @new_exhibit_id WHERE Exhibit_no = @old_exhibit_id;
+    DELETE FROM Exhibit WHERE Exhibit_no = @old_exhibit_id;
+    SELECT * FROM Animal WHERE Exhibit_no = @new_exhibit_id;
+    Update Staff SET Exhibit_NO = @new_exhibit_id WHERE Exhibit_NO = @old_exhibit_id;
+END;
+--Destroy Exhibit Test
+EXEC DestroyExhibit @old_exhibit_id = 1, @new_exhibit_id = 2
+
+
+
+
 
 go
 CREATE VIEW ExhibitAnimalCount AS
