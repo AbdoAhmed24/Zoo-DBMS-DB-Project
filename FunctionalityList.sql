@@ -398,3 +398,97 @@ END
 EXEC DiagnoseAnimal @Animal_Id = 2, @Status = 'Healthy', @Diagnosis = 'Routine Checkup', @Date_Diagnosed = '2022-02-01', @Event_Type = 'Checkup', @Clinic_No = 1
 
 
+go
+CREATE PROCEDURE TransferStaff 
+    @staff_id INT, 
+    @new_location_no INT
+AS
+BEGIN
+    DECLARE @is_manager BIT, @old_location_no INT, @substitutional_manager_id INT, @new_location_type VARCHAR(50);
+    SELECT @is_manager = dbo.IsManager(@staff_id);
+
+	SELECT 
+            @old_location_no = Clinic_No, @new_location_type = 'Clinic' 
+        FROM Staff
+        WHERE ID = @staff_id AND Clinic_No IS NOT NULL;
+		SET @substitutional_manager_id = dbo.FindClinicManager(@staff_id);
+
+        IF @old_location_no IS NULL
+        BEGIN
+            SELECT 
+                @old_location_no = Exhibit_No, @new_location_type = 'Exhibit' 
+            FROM Staff
+            WHERE ID = @staff_id AND Exhibit_No IS NOT NULL;
+			SET @substitutional_manager_id = dbo.FindExhibitAdvisor(@staff_id)
+        END
+
+        IF @old_location_no IS NULL
+        BEGIN
+            SELECT 
+                @old_location_no = Shop_No, @new_location_type = 'Shop' 
+            FROM Staff
+            WHERE ID = @staff_id AND Shop_No IS NOT NULL;
+			SET @substitutional_manager_id = dbo.FindShopManager(@staff_id);
+        END
+
+    IF @is_manager = 1
+    BEGIN
+        UPDATE Staff 
+        SET Manager_Id = @substitutional_manager_id
+        WHERE Manager_Id = @staff_id;
+
+        IF @new_location_type = 'Clinic'
+        BEGIN
+            UPDATE Staff SET Clinic_No = @new_location_no, Exhibit_No = NULL, Shop_No = NULL WHERE ID = @staff_id;
+			UPDATE Clinic SET CManager_Id = @substitutional_manager_id WHERE Clinic_No = @old_location_no;
+        END
+        ELSE IF @new_location_type = 'Exhibit'
+        BEGIN
+            UPDATE Staff SET Exhibit_No = @new_location_no, Clinic_No = NULL, Shop_No = NULL WHERE ID = @staff_id;
+			UPDATE Exhibit SET EManager_Id = @substitutional_manager_id WHERE Exhibit_No = @old_location_no;
+        END
+        ELSE IF @new_location_type = 'Shop'
+        BEGIN
+            UPDATE Staff SET Shop_No = @new_location_no, Clinic_No = NULL, Exhibit_No = NULL WHERE ID = @staff_id;
+			UPDATE Shop SET SManager_Id = @substitutional_manager_id WHERE Shop_No = @old_location_no;
+        END
+    END
+    ELSE
+    BEGIN
+
+		IF @new_location_type = 'Clinic'
+        BEGIN
+			UPDATE Staff SET Clinic_No = @new_location_no, Exhibit_No = NULL, Shop_No = NULL, Manager_ID = (SELECT CManager_Id FROM Clinic WHERE Clinic_No = @new_location_no) WHERE ID = @staff_id;
+        END
+        ELSE IF @new_location_type = 'Exhibit'
+        BEGIN
+			UPDATE Staff SET Exhibit_No = @new_location_no, Clinic_No = NULL, Shop_No = NULL, Manager_ID = (SELECT EManager_Id FROM Exhibit WHERE Exhibit_No = @new_location_no) WHERE ID = @staff_id;
+        END
+        ELSE IF @new_location_type = 'Shop'
+        BEGIN
+			UPDATE Staff SET Shop_No = @new_location_no, Clinic_No = NULL, Exhibit_No = NULL, Manager_ID = (SELECT SManager_Id FROM Shop WHERE Shop_No = @new_location_no) WHERE ID = @staff_id;
+        END	
+    END
+END;
+
+
+go
+CREATE VIEW ExhibitAnimalCount AS
+SELECT 
+    Exhibit_no, 
+    COUNT(Animal_Id) AS NumberOfAnimals
+FROM 
+    Animal
+GROUP BY 
+    Exhibit_no;
+
+go
+CREATE VIEW GetTotalShopRevenue AS
+SELECT 
+    shop_no, 
+    SUM(Transaction_Value) AS TotalRevenue
+FROM 
+    transacts
+GROUP BY 
+    shop_no;
+
